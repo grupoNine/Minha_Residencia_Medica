@@ -38,11 +38,17 @@
     No diretório raiz deste projeto, o arquivo makefile permite executar o programa e os testes de maneira automatizada.
 
   Lista de comandos:
+
     make build: Compila o programa principal.
+
     make run: Compila e executa o programa principal.
+
     make test: Executa todos os testes.
+
     make clean: Limpa o projeto, removendo arquivos objeto, executáveis e resultados de testes.
+
     make nomedoteste_test: Executa um teste específico, onde 'nome_do_teste' é o nome do teste.
+    
 
 - Para rodar o programa, digite no terminal:
   'make run' 
