@@ -23,7 +23,7 @@
 
     [https://git-scm.com/](https://git-scm.com/)
 
-    Para torná-lo default no VS Code: `Ctrl+Shift+P -> Terminal: Select Default Profile`
+    Para torná-lo default no VS Code: `Ctrl+Shift+P` -> `Terminal: Select Default Profile`
 
     _Obs. Não esquecer de adicionar ambos às variáveis do sistema._
 
@@ -51,11 +51,17 @@
     
 
 - Para rodar o programa, digite no terminal:
-  'make run' 
-  ou
-  'gcc -o build/main.exe src/01_presentation/presentation.c src/02_application/application.c src/03_data/data.c main.c' e depois './build/main.exe'
 
-- 
+  `make run` 
+ 
+  ou
+ 
+  `gcc -o build/main.exe src/01_presentation/presentation.c src/02_application/application.c src/03_data/data.c main.c` 
+  
+  e depois 
+  
+  `./build/main.exe`
+
 ---
 
 ### 📐 Arquitetura
