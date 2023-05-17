@@ -13,37 +13,56 @@
 
 ---
 
-### 🤖 Setup
+### 🖥️ Setup
 
-- Sugerimos utilizar o VS Code e MinGW para este projeto:
-  Instruções como instalá-los em: [https://code.visualstudio.com/docs/cpp/config-mingw](https://code.visualstudio.com/docs/cpp/config-mingw)
+- Sugerimos utilizar o **VS Code** e **MinGW**[🔗](https://www.mingw-w64.org/) para este projeto:
+
+        Instruções:[https://code.visualstudio.com/docs/cpp/config-mingw](https://code.visualstudio.com/docs/cpp/config-mingw)
 
 - Sugerimos também a utilização do Git Bash no terminal VSCode:
-    [https://git-scm.com/](https://git-scm.com/)
-    Para torná-lo default no VS Code: Ctrl+Shift+P -> Terminal: Select Default Profile
 
-Obs. Não esquecer de adicionar ambos às variáveis do sistema.
+    [https://git-scm.com/](https://git-scm.com/)
+
+    Para torná-lo default no VS Code: `Ctrl+Shift+P -> Terminal: Select Default Profile`
+
+    _Obs. Não esquecer de adicionar ambos às variáveis do sistema._
 
 - Instalar Make [🔗](https://www.gnu.org/software/make/manual/make.html):
-    1 Na pasta BIN do MinGW, renomear 'mingw32-make' para 'make'
-    2 Adicionar 'make' como  variável do sistema. 
-    3 Testar no terminal com "make --version"
+    
+    1 Na pasta `bin` do diretório de instalação do MinGW, renomear `mingw32-make` para `make`
 
-  No diretório raiz deste projeto, o arquivo makefile permite executar o programa e os testes de maneira automatizada.
+    2 Adicionar make as variáveis do sistema. 
+
+    3 Testar no terminal com `make --version`
+
+    No diretório raiz deste projeto, o arquivo makefile permite executar o programa e os testes de maneira automatizada.
 
   Lista de comandos:
-    make build: Compila o programa principal.
-    make run: Compila e executa o programa principal.
-    make test: Executa todos os testes.
-    make clean: Limpa o projeto, removendo arquivos objeto, executáveis e resultados de testes.
-    make nomedoteste_test: Executa um teste específico, onde 'nome_do_teste' é o nome do teste.
+    `make build`: Compila o programa principal.
+    
+    `make run`: Compila e executa o programa principal.
+    
+    `make test`: Executa todos os testes.
+    
+    `make clean`: Limpa o projeto, removendo arquivos objeto, executáveis e resultados de testes.
+    
+    `make nomedoteste_test`: Executa um teste específico, onde 'nome_do_teste' é o nome do teste.
+    
 
-- digite 'make run' ou ' ' no terminal para iniciar o programa.
+- Digite `make run` ou `gcc -0 aasdsadas ` no terminal para iniciar o programa.
 
 - 
 ---
 
 ### 📐 Arquitetura
+
+<img width="1668" alt="Arquitetura (3)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/7a6ea8dc-3201-40e9-a5e1-b71dd750c4f8">
+
+<img width="3517" alt="Arquitetura (2)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/4d626814-fe42-41d8-8b48-7894adf0f9cd">
+
+<img width="2885" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/86b109a9-1454-401e-acf2-92c61cbd2e89">
+
+<img width="2885" alt="Arquitetura (1)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/219c8456-5945-4a08-a0a6-c6de5983df23">
 
 ---
 
@@ -56,7 +75,7 @@ Obs. Não esquecer de adicionar ambos às variáveis do sistema.
 
 ---
 
-### 🔲 OPCAO 4
+### 🔲 OPCAO 04
 
 
 ---
@@ -91,3 +110,4 @@ Obs. Não esquecer de adicionar ambos às variáveis do sistema.
     
   </tr>
 </table>    
+  
