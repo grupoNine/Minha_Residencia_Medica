@@ -38,7 +38,10 @@ Obs. Não esquecer de adicionar ambos às variáveis do sistema.
     make clean: Limpa o projeto, removendo arquivos objeto, executáveis e resultados de testes.
     make nomedoteste_test: Executa um teste específico, onde 'nome_do_teste' é o nome do teste.
 
-- digite 'make run' ou ' ' no terminal para iniciar o programa.
+- Para rodar o programa, digite no terminal:
+  'make run' 
+  ou
+  'gcc -o build/main.exe src/01_presentation/presentation.c src/02_application/application.c src/03_data/data.c main.c' e depois './build/main.exe'
 
 - 
 ---

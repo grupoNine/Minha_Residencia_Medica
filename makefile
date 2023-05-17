@@ -18,7 +18,7 @@
 #else
 CLEANUP=rm -f
 MKDIR=mkdir -p
-TARGET_EXTENSION=out
+TARGET_EXTENSION=exe
 #endif
 
 # Definição dos caminhos usados no projeto.
@@ -34,7 +34,7 @@ PATHR = build/results/
 BUILD_PATHS = $(PATHB) $(PATHD) $(PATHO) $(PATHR)
 
 # Identificando todos os arquivos de teste.
-SRCT = $(wildcard $(PATHT)*/*/*.c)
+SRCT = $(wildcard $(PATHT)*/*.c)
 
 # Definindo os comandos de compilação e linkagem.
 COMPILE=gcc -c
@@ -47,8 +47,9 @@ build: $(BUILD_PATHS) $(PATHB)main.$(TARGET_EXTENSION)
 	@echo "Construção do programa principal concluída."
 
 # Regra para compilar o arquivo main.c e todos os arquivos .c na pasta src.
-$(PATHB)main.$(TARGET_EXTENSION): $(PATHS)*/*.c main.c
-	$(LINK) -Wl,-subsystem,console -o $@ $^
+$(PATHB)main.$(TARGET_EXTENSION): $(wildcard $(PATHS)*/*.c) main.c
+	$(LINK) -o $@ $^
+
 
 # Regra para construir e executar o programa.
 run: $(BUILD_PATHS) $(PATHB)main.$(TARGET_EXTENSION)
