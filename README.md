@@ -73,6 +73,8 @@
 
 ### 📐 Arquitetura
 
+<img width="820" alt="arquitetura_" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/005a8c29-7edb-435a-a480-d8e4a0f26faa">
+
 <img width="1668" alt="Arquitetura (3)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/7a6ea8dc-3201-40e9-a5e1-b71dd750c4f8">
 
 <img width="3517" alt="Arquitetura (2)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/4d626814-fe42-41d8-8b48-7894adf0f9cd">
@@ -80,6 +82,7 @@
 <img width="2885" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/86b109a9-1454-401e-acf2-92c61cbd2e89">
 
 <img width="2885" alt="Arquitetura (1)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/219c8456-5945-4a08-a0a6-c6de5983df23">
+
 
 ---
 
