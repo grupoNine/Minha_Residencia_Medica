@@ -23,7 +23,7 @@
 
     [https://git-scm.com/](https://git-scm.com/)
 
-    Para torná-lo default no VS Code: `Ctrl+Shift+P -> Terminal: Select Default Profile`
+    Para torná-lo default no VS Code: `Ctrl+Shift+P` -> `Terminal: Select Default Profile`
 
     _Obs. Não esquecer de adicionar ambos às variáveis do sistema._
 
@@ -111,13 +111,11 @@
     <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/116602650?v=4" width="100px;" alt=""/><br /><sub><b>Gislaine Reis</b></sub></a><br /></a></td>
     <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/116669790?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Cortez</b></sub></a><br /></a></td>
     <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/111138996?v=4" width="100px;" alt=""/><br /><sub><b>Pedro Coelho</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="" width="100px;" alt=""/><br /><sub><b>nome</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="" width="100px;" alt=""/><br /><sub><b>nome</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="" width="100px;" alt=""/><br /><sub><b>nome</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="" width="100px;" alt=""/><br /><sub><b>nome</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="" width="100px;" alt=""/><br /><sub><b>nome</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="" width="100px;" alt=""/><br /><sub><b>nome</b></sub></a><br /></a></td>
-
+   <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D03AQEWkpGgAcLo1g/profile-displayphoto-shrink_800_800/0/1681732287722?e=1689811200&v=beta&t=vVd3v_YpV9SKdRb5PsvHOVR-iCTeRcIttLRth9ARC-Q" width="100px;" alt=""/><br /><sub><b>Letícia Pinheiro</b></sub></a><br /></a></td>   
+    <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D03AQGwFWKSKKaDUA/profile-displayphoto-shrink_800_800/0/1679698808237?e=1689811200&v=beta&t=0x_3B1zlS50soHbgrMand6jJHPZQZy49NfavBw95Fxc" width="100px;" alt=""/><br /><sub><b>Bruna Carvalho</b></sub></a><br /></a></td>
+     <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D35AQEbX5ogC2YVRg/profile-framedphoto-shrink_800_800/0/1642452377945?e=1685106000&v=beta&t=4dC0vixL13cvxCBPV3TXB-GEYBrB3m7R6Aa3AohXQco" width="100px;" alt=""/><br /><sub><b>Guilherme Lopes</b></sub></a><br /></a></td>   
+   
+   
 
     
   </tr>
