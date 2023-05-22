@@ -1,0 +1,187 @@
+
+
+====== INICIANDO TESTES ======
+
+
+
+============================================================
+
+>>>Testando getPreceptorNames()
+
+
+------ Nomes de Preceptores ------
+---------------------------------
+Preceptor 1
+Nome de Exibição: preceptor1 exhibitionName
+ID Único: p1
+---------------------------------
+Preceptor 2
+Nome de Exibição: preceptor2 exhibitionName
+ID Único: p2
+---------------------------------
+Preceptor 3
+Nome de Exibição: preceptor3 exhibitionName
+ID Único: p3
+---------------------------------
+
+
+============================================================
+
+>>>Testando signup()
+
+
+------ Teste 0 : Nome ok, level ok ------
+[2J[1;1H[Informacoes do novo usuario]
+
+ID Unico: -iti
+Nome Completo: -----------teste Inicializado Teste Inicializado---------
+Nome de Exibicao: -----------teste Inicializado---------
+Senha: yjJnk
+Nivel de Acesso: 2
+Data de Criacao: 21-05-2023 21:12:13
+
+
+
+  [Teste bem sucedido]  
+
+
+------ Teste 1 : fullName=NULL ------
+
+  [Teste bem sucedido]  
+
+
+------ Teste 2 : nome com mais de 100 caracteres ------
+
+  [Teste bem sucedido]  
+
+
+------ Teste 3 : nome com 1 letra ------
+[2J[1;1H[Informacoes do novo usuario]
+
+ID Unico: a
+Nome Completo: A
+Nome de Exibicao: A
+Senha: yjJnk
+Nivel de Acesso: 2
+Data de Criacao: 21-05-2023 21:12:13
+
+
+
+  [Teste bem sucedido]  
+
+
+------ Teste 4 : nome com whitespace no inicio e no final ------
+[2J[1;1H[Informacoes do novo usuario]
+
+ID Unico: a2
+Nome Completo: Abcd
+Nome de Exibicao: Abcd
+Senha: yjJnk
+Nivel de Acesso: 1
+Data de Criacao: 21-05-2023 21:12:13
+
+
+
+  [Teste bem sucedido]  
+
+
+------ Teste 5 : level < 1 ------
+
+  [Teste bem sucedido]  
+
+
+------ Teste 6 : level > 3 ------
+
+  [Teste bem sucedido]  
+
+
+------ Teste 7 : level com float ------
+[2J[1;1H[Informacoes do novo usuario]
+
+ID Unico: a3
+Nome Completo: Abcd
+Nome de Exibicao: Abcd
+Senha: yjJnk
+Nivel de Acesso: 1
+Data de Criacao: 21-05-2023 21:12:13
+
+
+
+  [Teste falhou]  
+
+
+------ Teste 8 : nome com 100 caracteres sem espaços em branco ------
+[2J[1;1H[Informacoes do novo usuario]
+
+ID Unico: a4
+Nome Completo: Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Nome de Exibicao: Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Senha: yjJnk
+Nivel de Acesso: 1
+Data de Criacao: 21-05-2023 21:12:13
+
+
+
+  [Teste bem sucedido]  
+
+
+------ Teste 9 : nome com 1 letra e 1 espaço em branco repetidamente até um total de 100 caracteres ------
+[2J[1;1H[Informacoes do novo usuario]
+
+ID Unico: aaaaaaaaaaaaaaaaaaaaaaaaa
+Nome Completo: A A A A A A A A A A A A A A A A A A A A A A A A A
+Nome de Exibicao: A A
+Senha: yjJnk
+Nivel de Acesso: 1
+Data de Criacao: 21-05-2023 21:12:13
+
+
+
+  [Teste bem sucedido]  
+
+
+------ Teste 10 : TESTE FINALIZADO ------
+[2J[1;1H[Informacoes do novo usuario]
+
+ID Unico: -ftf
+Nome Completo: -----------teste Finalizado Teste Finalizado---------
+Nome de Exibicao: -----------teste Finalizado---------
+Senha: yjJnk
+Nivel de Acesso: 1
+Data de Criacao: 21-05-2023 21:12:13
+
+
+
+  [Teste bem sucedido]  
+
+
+============================================================
+
+>>>Testando getPreceptorNames() novamente
+
+
+------ Nomes de Preceptores ------
+---------------------------------
+Preceptor 1
+Nome de Exibição: -----------teste Inicializado---------
+ID Único: -iti
+---------------------------------
+Preceptor 2
+Nome de Exibição: A
+ID Único: a
+---------------------------------
+Preceptor 3
+Nome de Exibição: preceptor1 exhibitionName
+ID Único: p1
+---------------------------------
+Preceptor 4
+Nome de Exibição: preceptor2 exhibitionName
+ID Único: p2
+---------------------------------
+Preceptor 5
+Nome de Exibição: preceptor3 exhibitionName
+ID Único: p3
+---------------------------------
+
+
+====== TESTES CONCLUÍDOS ======

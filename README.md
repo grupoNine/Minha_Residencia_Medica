@@ -1,25 +1,25 @@
-# Minha Residência Médica - M.R.M
+# ⚕️ Minha Residência Médica - MRM ⚕️
 
-{{descrição do projeto}}
+{{breve descrição do projeto}}
 
 
-  - [🖥️ Setup](#-setup)
+  - [👣 Instalação](#-setup)
+  - [🖥️ Programa](#-arquitetura)
   - [📐 Arquitetura](#-arquitetura)
-  - [🔲 OPCAO 02](#-opcao-02)
-  - [🔲 OPCAO 03](#-opcao-03)
-  - [🔲 OPCAO 04](#-opcao-04)
-  - [🛠 Ferramentas](#-ferramentas)
+  - [🔎 Testes](#-testes)
+  - [🛠️ Ferramentas](#-ferramentas)
+  - [♾️ Projeto](#-opcao-04)
   - [👨‍💻 Team](#-team)
 
 ---
 
-### 🖥️ Setup
+### 👣 Instalação
 
 - Sugerimos utilizar o **VS Code** e **MinGW**[🔗](https://www.mingw-w64.org/) para este projeto:
 
     Instruções:[https://code.visualstudio.com/docs/cpp/config-mingw](https://code.visualstudio.com/docs/cpp/config-mingw)
 
-- Sugerimos também a utilização do Git Bash no terminal VSCode:
+- Sugerimos também a utilização do **Git Bash** no terminal VSCode:
 
     [https://git-scm.com/](https://git-scm.com/)
 
@@ -27,7 +27,7 @@
 
     _Obs. Não esquecer de adicionar ambos às variáveis do sistema._
 
-- Instalar Make [🔗](https://www.gnu.org/software/make/manual/make.html):
+- Instalar **Make** [🔗](https://www.gnu.org/software/make/manual/make.html):
     
     1 Na pasta `bin` do diretório de instalação do MinGW, renomear `mingw32-make` para `make`
 
@@ -37,25 +37,38 @@
 
     No diretório raiz deste projeto, o arquivo makefile permite executar o programa e os testes de maneira automatizada.
 
-  Lista de comandos:
+- **Lista de comandos**
 
-    make build: Compila o programa principal.
-
-    make run: Compila e executa o programa principal.
-
-    make test: Executa todos os testes.
-
-    make clean: Limpa o projeto, removendo arquivos objeto, executáveis e resultados de testes.
-
-    make nomedoteste_test: Executa um teste específico, onde 'nome_do_teste' é o nome do teste.
-    
-
-- Para rodar o programa, digite no terminal:
-  'make run' 
+// Compila e executa o programa principal.
+  `make run` 
   ou
-  'gcc -o build/main.exe src/01_presentation/presentation.c src/02_application/application.c src/03_data/data.c main.c' e depois './build/main.exe'
+   `gcc -g -I./src src/presentation.c src/application.c src/data.c main.c -o build/main && ./build/main`
 
-- 
+//Compila e executa o programa principal no modo debug
+ `make run-debug`
+ ou
+ `gcc -g -I./src src/presentation.c src/application.c src/data.c main.c -o build/main && gdb build/main`
+
+
+// Compila e executa os testes.
+ `make test` 
+ ou
+ `gcc -g -I./src src/presentation.c src/application.c src/data.c tests/tests.c -o build/Tests && ./build/Tests > tests/tests.txt`
+
+// Compila e executa os testes no modo debug
+ `make test-debug`
+ ou
+`gcc -g -I./src src/presentation.c src/application.c src/data.c tests/tests.c -o build/Tests && gdb build/Tests`
+
+// Limpa os arquivos temporários e o executável
+ `make clean` 
+
+---
+
+### 🖥️ Programa
+
+
+
 ---
 
 ### 📐 Arquitetura
@@ -70,29 +83,24 @@
 
 ---
 
-### 🔲 OPCAO 02
+### 🔎 Testes
 
 ---
 
-### 🔲 OPCAO 03
-
-
----
-
-### 🔲 OPCAO 04
-
-
----
-
-### 🛠 Ferramentas
+### 🛠️ Ferramentas
 
 -   **[C](https://www.open-std.org/jtc1/sc22/wg14/)**
 -   **[MinGW-w64](https://www.mingw-w64.org/)**
--   **[Unity](http://www.throwtheswitch.org/unity)**
 -   **[Make](https://www.gnu.org/software/make/)**
 -   **[Figma](https://www.figma.com/)**
 -   **[Github](https://github.com/)**
 -   **[Visual Studio Code](https://code.visualstudio.com/)**
+
+---
+
+### ♾️ Projeto
+
+
 
 ---
 
@@ -113,4 +121,3 @@
 
     
   </tr>
-  
