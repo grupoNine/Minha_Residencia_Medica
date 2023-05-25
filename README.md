@@ -8,6 +8,7 @@
   - [📐 Arquitetura](#-arquitetura)
   - [🔎 Testes](#-testes)
   - [🛠️ Ferramentas](#-ferramentas)
+  - [📖 Referências](#-referências)
   - [♾️ Projeto](#-opcao-04)
   - [👨‍💻 Team](#-team)
 
@@ -98,6 +99,15 @@
 -   **[Figma](https://www.figma.com/)**
 -   **[Github](https://github.com/)**
 -   **[Visual Studio Code](https://code.visualstudio.com/)**
+
+---
+
+### 📖 Referências
+
+- **[21st Century C](https://www.oreilly.com/library/view/21st-century-c/9781491904428/)** A "Part I.The Environment" foi particulamente esclarecedora para melhorar as práticas em relação a compilação, linkagem, debug, teste, documentação, shell e versionamento. Foram úteis algumas das práticas sugeridas principalmente no uso do makefile, debug e testes.
+- **[Engenharia de Software](https://engsoftmoderna.info/)** Foi tomado como referência em especial em relação a modelagem, arquitetura e princípios de software. Referências  pontuais citadas secundariamente neste livro foram consultadas diretamente como fonte primária.
+- **[C: the complete reference](https://www.amazon.com.br/C-Complete-Reference-Herbert-Schildt/dp/0072121246)** Para consulta sobre informações e conhecimentos técnicas.
+- **[GeeksForGeeks.org](https://www.geeksforgeeks.org/c-programming-language/)** Site para consultas e exemplos de códigos e técnicas.
 
 ---
 
