@@ -55,6 +55,7 @@ bool solicitarAvaliacao(User* residente, User* preceptor) {
     avaliacao.nota2 = 0;
     avaliacao.nota3 = 0;
     avaliacao.media = 0.0;
+    strcpy(avaliacao.feedback, "feedback");
     strcpy(avaliacao.preceptorID, preceptor->uniqueID);
     strcpy(avaliacao.residenteID, residente->uniqueID);
     avaliacao.timestamp = time(NULL);
@@ -108,7 +109,7 @@ AvaliacaoNode* getAvaliacoesForPreceptor(char* preceptorID) {
     return sortedHead;
 }
 
-bool avaliarResidente(User* preceptor, User* residente, float nota1, float nota2, float nota3){
+bool avaliarResidente(User* preceptor, User* residente, float nota1, float nota2, float nota3, char* feedback){
     if(preceptor == NULL || residente == NULL){
         printf("[Preceptor ou residente invalido]\n");
         return false;
@@ -118,8 +119,10 @@ bool avaliarResidente(User* preceptor, User* residente, float nota1, float nota2
     avaliacao.nota2 = nota2;
     avaliacao.nota3 = nota3;
     avaliacao.media = roundf((nota1 + nota2 + nota3) / 3.0 * 100) / 100;
+    strncpy(avaliacao.feedback, feedback, 300);
     strcpy(avaliacao.preceptorID, preceptor->uniqueID);
     strcpy(avaliacao.residenteID, residente->uniqueID);
+
     avaliacao.timestamp = time(NULL);
     avaliacao.avaliado = true;
     return removeUserAvaliacoes(preceptor, avaliacao) && saveUserAvaliacoes(residente, avaliacao);

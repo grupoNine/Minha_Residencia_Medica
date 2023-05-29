@@ -22,7 +22,7 @@ bool saveUserAvaliacoes(User* user, Avaliacao avaliacao) {
     }
     FILE *fp = fopen(path, "a");
     if (fp!=NULL) {
-        fprintf(fp, "%f|%f|%f|%f|%s|%s|%ld|%d\n", avaliacao.nota1, avaliacao.nota2, avaliacao.nota3, avaliacao.media, avaliacao.preceptorID, avaliacao.residenteID, (long)avaliacao.timestamp, avaliacao.avaliado);
+        fprintf(fp, "%f|%f|%f|%f|%s|%s|%s|%ld|%d\n", avaliacao.nota1, avaliacao.nota2, avaliacao.nota3, avaliacao.media, avaliacao.feedback, avaliacao.preceptorID, avaliacao.residenteID, (long)avaliacao.timestamp, avaliacao.avaliado);
         fclose(fp);
         return true;
     }else{
@@ -56,7 +56,7 @@ bool removeUserAvaliacoes(User* user, Avaliacao avaliacao) {
     Avaliacao tempAvaliacao;
     char line[256];
     while (fgets(line, sizeof(line), fp)) {
-        sscanf(line, "%f|%f|%f|%f|%[^|]|%[^|]|%ld|%d", &tempAvaliacao.nota1, &tempAvaliacao.nota2, &tempAvaliacao.nota3, &tempAvaliacao.media, tempAvaliacao.preceptorID, tempAvaliacao.residenteID, (long*)&tempAvaliacao.timestamp, &tempAvaliacao.avaliado);
+        sscanf(line, "%f|%f|%f|%f|%[^|]|%[^|]|%[^|]|%ld|%d", &tempAvaliacao.nota1, &tempAvaliacao.nota2, &tempAvaliacao.nota3, &tempAvaliacao.media, tempAvaliacao.feedback, tempAvaliacao.preceptorID, tempAvaliacao.residenteID, (long*)&tempAvaliacao.timestamp, &tempAvaliacao.avaliado);
         if (strcmp(tempAvaliacao.preceptorID, avaliacao.preceptorID) != 0 || strcmp(tempAvaliacao.residenteID, avaliacao.residenteID) != 0) {
             fprintf(fpTemp, "%s", line);
         }
@@ -80,7 +80,7 @@ AvaliacaoNode* loadAvaliacoesForPreceptor(char* preceptorID) {
     AvaliacaoNode* head = NULL;
     while (fgets(line, sizeof(line), fp)) {
         Avaliacao avaliacao;
-        sscanf(line, "%f|%f|%f|%f|%[^|]|%[^|]|%ld|%d", &avaliacao.nota1, &avaliacao.nota2, &avaliacao.nota3, &avaliacao.media, avaliacao.preceptorID, avaliacao.residenteID, &(avaliacao.timestamp), &(avaliacao.avaliado));
+        sscanf(line, "%f|%f|%f|%f|%[^|]|%[^|]|%[^|]|%ld|%d", &avaliacao.nota1, &avaliacao.nota2, &avaliacao.nota3, &avaliacao.media, avaliacao.feedback, avaliacao.preceptorID, avaliacao.residenteID, &(avaliacao.timestamp), &(avaliacao.avaliado));
         AvaliacaoNode* novoNode = malloc(sizeof(AvaliacaoNode));
         novoNode->avaliacao = avaliacao;
         novoNode->next = NULL;

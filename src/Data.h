@@ -27,10 +27,12 @@ typedef struct Avaliacao {
     float nota2;
     float nota3;
     float media;
+    char feedback[301];
     char preceptorID[51];
     char residenteID[51];
     time_t timestamp;
     bool avaliado;
+
 } Avaliacao;
 
 typedef struct AvaliacaoNode {

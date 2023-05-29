@@ -1,7 +1,0 @@
-[Informacoes do usuario]
-ID Unico: ats
-Nome Completo: Aluno Teste Silva
-Nome de Exibicao: Aluno Silva
-Senha: Ko8qn
-Nivel de Acesso: 1
-Data de Criacao: 23-05-2023 15:03:05

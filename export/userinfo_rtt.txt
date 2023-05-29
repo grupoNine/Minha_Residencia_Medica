@@ -1,0 +1,7 @@
+[Informacoes do usuario]
+ID Unico: rtt
+Nome Completo: Residente Teste Teste
+Nome de Exibicao: Residente Teste
+Senha: FyjLj
+Nivel de Acesso: 1
+Data de Criacao: 28-05-2023 21:29:16

@@ -204,11 +204,19 @@ void avaliarResidenteMenu(char* residenteID) {
         printf("Terceira nota (0 - 10) >>> ");
         scanf("%f", &nota3);
     } while(nota3<0 || nota3>10);
+    char feedback[301];
+    do {
+        printf("Feedback (max 300 caracteres) >>> ");
+        scanf(" %[^\n]s", feedback);
+        if(strlen(feedback) > 300) {
+            printf("[Feedback nao deve ultrapassar 300 caracteres]\n\n");
+        }
+    } while(strlen(feedback) > 300);
     printf("Confirmar avaliacao? [s] Sim [n] Nao\n\n>>> ");
     char choice;
     scanf(" %c", &choice);
     if (choice=='s' || choice=='S') {
-        if (avaliarResidente(current.user, residente, nota1, nota2, nota3)) {
+        if (avaliarResidente(current.user, residente, nota1, nota2, nota3, feedback)) {
             clear();
             printf("[Avaliacao realizada com sucesso]\n\n");
         } else {

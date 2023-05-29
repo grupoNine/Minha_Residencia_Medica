@@ -14,7 +14,7 @@ bool solicitarAvaliacao(User* residente, User* preceptor);
 // PRECEPTOR MENU //
 //avaliacao//
 AvaliacaoNode* getAvaliacoesForPreceptor(char* preceptorID) ;
-bool avaliarResidente(User* preceptor, User* residente, float nota1, float nota2, float nota3);
+bool avaliarResidente(User* preceptor, User* residente, float nota1, float nota2, float nota3, char* feedback);
 
 
 // GESTOR MENU //
