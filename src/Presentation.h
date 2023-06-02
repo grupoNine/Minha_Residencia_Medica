@@ -26,6 +26,9 @@ void gestorMenu();
 bool signupInterface();
 void printUserInfo(User* user);
 
+// QUADRO DE AVISOS //
+void quadroDeAvisosMenu();
+
 // MISC //
 void quitMsg();
 void logo();

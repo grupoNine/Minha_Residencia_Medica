@@ -5,6 +5,10 @@
 #include "Data.h"
 
 
+// QUADRO DE AVISOS //
+Aviso readAviso();
+void writeAviso();
+
 
 // RESIDENTE MENU //
 //avaliacao//

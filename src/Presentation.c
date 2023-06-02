@@ -39,10 +39,16 @@ void userInterface(User* user) {
 }
 
 // RESIDENTE MENU //
-
 void residenteMenu() {
     while(true){
-        printf("RESIDENTE\n\n%s\n\n", current.user->exhibitionName);
+        printf("RESIDENTE\n%s\n\n", current.user->exhibitionName);
+        Aviso aviso = readAviso(); 
+        printf("---------QUADRO DE AVISOS---------\n\n");
+        printf("%s\n", aviso.mensagem);
+        printf("    Ass.: %s\n\n", aviso.username);
+        printf("----------------------------------\n\n");
+        
+        printf("MENU\n");
         int choice;
         printf("[1] Solicitar avaliacao\n[0] Sair\n\n>>> ");
         scanf("%d", &choice);
@@ -53,18 +59,18 @@ void residenteMenu() {
             current.user = NULL;
             clear();
             break;
-        }else if(choice == 1){
+        } else if(choice == 1){
             clear();
             solicitarAvaliacaoMenu();
-        }else{
+        } else {
             clear();
             printf("[Opcao invalida]\n\n");
         }
     }
 }
 
-// avaliacao
 
+// avaliacao
 void solicitarAvaliacaoMenu() {
     PreceptorNameNode* preceptorNames = getPreceptorNames();
     if(preceptorNames==NULL){
@@ -124,12 +130,20 @@ void solicitarAvaliacaoMenu() {
 }
 
 // PRECEPTOR MENU //
-
 void preceptorMenu() {
     while(true){
-        printf("PRECEPTOR\n\n%s\n\n", current.user->exhibitionName);
+        printf("PRECEPTOR\n%s\n\n", current.user->exhibitionName);
+        
+        Aviso aviso = readAviso(); 
+        printf("---------QUADRO DE AVISOS---------\n\n");
+        printf("%s\n", aviso.mensagem);
+        printf("    Ass.: %s\n\n", aviso.username);
+        printf("----------------------------------\n\n");
+        printf("MENU\n");
         int choice;
-        printf("[1] Avaliar residente\n[0] Sair\n\n>>> ");
+        printf("[1] Avaliar residente\n");
+        printf("[2] Quadro de avisos\n");
+        printf("[0] Sair\n\n>>> ");
         scanf("%d", &choice);
         getchar();
         if(choice==0){
@@ -140,6 +154,9 @@ void preceptorMenu() {
         }else if(choice==1){
             clear();
             listResidentesForAvaliacao();
+        }else if(choice==2){
+            clear();
+            quadroDeAvisosMenu();
         }else{
             clear();
             printf("[Opcao invalida]\n\n");
@@ -165,6 +182,10 @@ void listResidentesForAvaliacao() {
     if (choice<0 || choice>i) {
         clear();
         printf("[Opcao invalida]\n\n");
+        return;
+    }
+    if (choice==0) {
+        clear();
         return;
     }
     if(choice!=0) {
@@ -205,13 +226,14 @@ void avaliarResidenteMenu(char* residenteID) {
         scanf("%f", &nota3);
     } while(nota3<0 || nota3>10);
     char feedback[301];
+    
     do {
         printf("Feedback (max 300 caracteres) >>> ");
-        scanf(" %[^\n]s", feedback);
-        if(strlen(feedback) > 300) {
-            printf("[Feedback nao deve ultrapassar 300 caracteres]\n\n");
-        }
-    } while(strlen(feedback) > 300);
+        scanf(" %299[^\n]", feedback);
+        int ch;
+        while ((ch = getchar()) != '\n' && ch != EOF);
+    } while (strlen(feedback) > 300);
+
     printf("Confirmar avaliacao? [s] Sim [n] Nao\n\n>>> ");
     char choice;
     scanf(" %c", &choice);
@@ -228,37 +250,46 @@ void avaliarResidenteMenu(char* residenteID) {
 }
 
 // GESTOR MENU //
-
 void gestorMenu() {
-    while(true){
-        printf("GESTOR\n\n%s\n\n", current.user->exhibitionName);
+    while (true) {
+        printf("GESTOR\n%s\n\n", current.user->exhibitionName);
+        Aviso aviso = readAviso(); 
+        printf("---------QUADRO DE AVISOS---------\n\n");
+        printf("%s\n", aviso.mensagem);
+        printf("    Ass.: %s\n\n", aviso.username);
+        printf("----------------------------------\n\n");
+        printf("MENU\n");
         int choice;
-        printf("[1] Cadastrar novo usuario\n[0] Sair\n\n>>> ");
+        printf("[1] Cadastrar novo usuario\n");
+        printf("[2] Quadro de avisos\n");
+        printf("[0] Sair\n\n>>> ");
         scanf("%d", &choice);
         getchar();
-        if (choice==0){
+        if (choice == 0) {
             free(current.user);
             current.user = NULL;
             clear();
             break;
-        }else if(choice==1){
+        } else if (choice == 1) {
             bool signupResult = signupInterface();
-            if(signupResult){
+            if (signupResult) {
                 printf("[Cadastro realizado com sucesso]\n\n");
-            }else{
+            } else {
                 clear();
                 printf("[Cadastro falhou, tente novamente]\n\n");
             }
-        }else{
+        } else if(choice == 2){
+            quadroDeAvisosMenu();
+        } else {
             clear();
-            printf("[Opcao invalida]\n\n");
+            printf("[Opção invalida]\n\n");
         }
     }
 }
 
 // signup //
 
-bool signupInterface() {
+bool signupInterface(){
     clear();
     char fullName[101];
     int level;
@@ -285,7 +316,7 @@ bool signupInterface() {
     return true;
 }
 
-void printUserInfo(User* user) {
+void printUserInfo(User* user){
     clear();
     printf("[Informacoes do novo usuario]\n\n");
     printf("ID Unico: %s\n", user->uniqueID);
@@ -299,6 +330,34 @@ void printUserInfo(User* user) {
     printf("\n\n");
 }
 
+// QUADRO DE AVISOS //
+void quadroDeAvisosMenu(){
+    while (true) {
+        clear();
+        printf("QUADRO DE AVISOS\n\n");
+        Aviso aviso = readAviso(); 
+        printf("----------AVISO ATUAL----------\n");
+        printf("Mensagem: %s\n", aviso.mensagem);
+        printf("Autor: %s\n", aviso.username);
+        printf("--------------------------------\n\n");
+        printf("MENU\n");
+        printf("[1] Alterar mensagem\n");
+        printf("[0] Voltar\n\n");
+        printf(">>> ");
+        int choice;
+        scanf("%d", &choice);
+        getchar();
+        if (choice == 0) {
+            clear();
+            break;
+        }else if(choice == 1){
+            clear();
+            writeAviso();
+        }else{
+            printf("\nOpcao invalida. Tente novamente.\n\n");
+        }
+    }
+}
 // MISC //
 
 void quitMsg() {

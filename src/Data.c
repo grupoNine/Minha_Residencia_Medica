@@ -8,6 +8,29 @@
 #include "Application.h"
 #include "Presentation.h"
 
+// QUADRO DE AVISOS //
+Aviso getAvisos() {
+    FILE* fp = fopen("db/quadro_de_avisos/quadro_de_avisos.txt", "r");
+    Aviso aviso;
+    if (!fp) {
+        printf("[Erro ao abrir o arquivo]\n");
+        return aviso;
+    }
+    fscanf(fp, "%ld|%100[^|]|%300[^\n]", &(aviso.timestamp), aviso.username, aviso.mensagem);
+    fclose(fp);
+    return aviso;
+}
+
+bool saveAviso(Aviso aviso) {
+    FILE* fp = fopen("db/quadro_de_avisos/quadro_de_avisos.txt", "w");
+    if (!fp) {
+        printf("[Erro ao abrir o arquivo]\n");
+        return false;
+    }
+    fprintf(fp, "%ld|%s|%s\n", aviso.timestamp, aviso.username, aviso.mensagem);
+    fclose(fp);
+    return true;
+}
 // AVALIACAO //
 
 bool saveUserAvaliacoes(User* user, Avaliacao avaliacao) {
@@ -31,7 +54,6 @@ bool saveUserAvaliacoes(User* user, Avaliacao avaliacao) {
         return false;
     }
 }
-
 bool removeUserAvaliacoes(User* user, Avaliacao avaliacao) {
     char path[200];
     if(user->level==2){
@@ -67,7 +89,6 @@ bool removeUserAvaliacoes(User* user, Avaliacao avaliacao) {
     rename(tempPath, path);
     return true;
 }
-
 AvaliacaoNode* loadAvaliacoesForPreceptor(char* preceptorID) {
     char path[200];
     sprintf(path, "db/avaliacoes_preceptores/avaliacoes_%s.txt", preceptorID);
@@ -114,7 +135,7 @@ bool saveUser(User* user) {
     }
 }
 
-User** getAllUsers() {
+User** getAllUsers(){
     FILE *fp = fopen("db/users/users.txt", "r");
     if (!fp) {
         printf("[Erro ao abrir o arquivo]\n");

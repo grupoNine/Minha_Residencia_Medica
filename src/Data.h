@@ -52,6 +52,13 @@ typedef struct PreceptorNameNode {
     struct PreceptorNameNode* next;
 } PreceptorNameNode;
 
+// quadro de avisos //
+typedef struct Aviso {
+    time_t timestamp;
+    char mensagem[301];
+    char username[101];
+} Aviso;
+
 // FUNCTIONS //
 // user //
 bool saveUser(User* user);
@@ -64,6 +71,9 @@ bool removeUserAvaliacoes(User* user, Avaliacao avaliacao);
 AvaliacaoNode* loadAvaliacoesForPreceptor(char* preceptorID);
 bool saveUser(User* user);
 
+// quadro de avisos //
 
+Aviso getAvisos();
+bool saveAviso(Aviso aviso);
 
 #endif

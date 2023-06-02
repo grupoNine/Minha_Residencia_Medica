@@ -9,6 +9,32 @@
 #include "Presentation.h"
 #include "Data.h"
 
+
+// QUADRO DE AVISOS //
+
+Aviso readAviso() {
+    return getAvisos();
+}
+
+void writeAviso() {
+    char mensagem[301];
+    char username[101];
+    strncpy(username, current.user->exhibitionName, sizeof(username));
+    printf("\nEscreva a mensagem (ate 300 caracteres):\n");
+    fgets(mensagem, 301, stdin);
+    mensagem[strcspn(mensagem, "\n")] = '\0';
+    Aviso aviso;
+    aviso.timestamp = time(NULL);
+    strncpy(aviso.mensagem, mensagem, sizeof(aviso.mensagem));
+    strncpy(aviso.username, username, sizeof(aviso.username));
+    bool saveResult = saveAviso(aviso);
+    if(saveResult){
+        printf("\nAviso salvo com sucesso!\n\n");
+    }else{
+        printf("\nErro ao salvar o aviso.\n\n");
+    }
+}
+
 // RESIDENTE MENU //
 
 PreceptorNameNode* getPreceptorNames() {
