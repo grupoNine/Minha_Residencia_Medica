@@ -1,0 +1,5 @@
+UNIQUE_ID: e
+NOME: Emergencia
+DESCRICAO: Emergencia medica do hospital
+PRECEPTOR_ID: p1
+----------------

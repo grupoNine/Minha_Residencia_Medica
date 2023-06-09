@@ -3,7 +3,6 @@
 
 #include <stdbool.h>
 #include "Application.h"
-#include "data.h"
 
 // LOGIN  //
 User* loginInterface();
@@ -19,6 +18,11 @@ void preceptorMenu();
 //avaliacao//
 void listResidentesForAvaliacao();
 void avaliarResidenteMenu(char* residenteID);
+//ambiente de aprendizagem//
+void ambienteAprendizagemMenu();
+void listAmbienteMenu();
+void editarAmbienteMenu(AmbienteAprendizagem* ambiente);
+
 
 // GESTOR MENU //
 void gestorMenu();

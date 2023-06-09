@@ -61,4 +61,3 @@ run-debug: $(BUILD_DIR)/$(EXECUTABLE)
 # 'make test-debug'
 test-debug: $(BUILD_DIR)/Tests
 	gdb $(BUILD_DIR)/Tests
-

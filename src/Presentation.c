@@ -69,7 +69,6 @@ void residenteMenu() {
     }
 }
 
-
 // avaliacao
 void solicitarAvaliacaoMenu() {
     PreceptorNameNode* preceptorNames = getPreceptorNames();
@@ -143,6 +142,7 @@ void preceptorMenu() {
         int choice;
         printf("[1] Avaliar residente\n");
         printf("[2] Quadro de avisos\n");
+        printf("[3] Ambiente de Aprendizagem\n");
         printf("[0] Sair\n\n>>> ");
         scanf("%d", &choice);
         getchar();
@@ -157,6 +157,9 @@ void preceptorMenu() {
         }else if(choice==2){
             clear();
             quadroDeAvisosMenu();
+        }else if(choice==3){
+            clear();
+            ambienteAprendizagemMenu();
         }else{
             clear();
             printf("[Opcao invalida]\n\n");
@@ -247,6 +250,92 @@ void avaliarResidenteMenu(char* residenteID) {
         }
     }
     free(residente);
+}
+
+//ambiente de aprendizagem//
+void ambienteAprendizagemMenu() {
+    while(true){
+        printf("AMBIENTE DE APRENDIZAGEM\n\n");
+        printf("PRECEPTOR\n%s\n\n", current.user->exhibitionName);
+        printf("MENU\n");
+        int choice;
+        printf("[1] Criar Ambiente de Aprendizagem\n");
+        printf("[2] Editar Ambiente de Aprendizagem\n");
+        printf("[0] Voltar\n\n>>> ");
+        scanf("%d", &choice);
+        getchar();
+        if(choice==0){
+            clear();
+            break;
+        }else if(choice==1){
+            clear();
+            createAmbienteAprendizagem();
+        }else if(choice==2){
+            clear();
+            listAmbienteMenu();
+        }else{
+            clear();
+            printf("[Opcao invalida]\n\n");
+        }
+    }
+}
+void listAmbienteMenu(){
+    AmbienteAprendizagem** ambientes = getAllAmbientesForPreceptor();
+    if(ambientes==NULL){
+        printf("[Erro ao obter ambientes]\n");
+        return;
+    }
+    printf("AMBIENTES DE APRENDIZAGEM\n\n");
+    printf("PRECEPTOR\n%s\n\n", current.user->exhibitionName);
+    printf("Selecione o ambiente:\n");
+    int i;
+    for(i=0;ambientes[i]!=NULL; i++){
+        printf("[%d] %s\n",i+1, ambientes[i]->name);
+    }
+    int count=i;
+    int choice;
+    printf("[0] Voltar\n\n>>> ");
+    scanf("%d", &choice);
+    getchar();
+    if(choice==0){
+        clear();
+        return;
+    }else if(choice>0 && choice<=count){
+        clear();
+        editarAmbienteMenu(ambientes[choice-1]);
+    }else{
+        clear();
+        printf("[Opcao invalida]\n\n");
+    }
+    freeAllAmbientes(ambientes);
+}
+
+void editarAmbienteMenu(AmbienteAprendizagem* ambiente) {
+    int choice;
+    do {
+        printf("EDITAR AMBIENTE DE APRENDIZAGEM\n\n");
+        printf("Ambiente: %s\n", ambiente->name);
+        printf("MENU\n");
+        printf("[1] Criar atividade para o ambiente\n");
+        printf("[2] Exportar ambiente\n");
+        printf("[0] Voltar\n\n>>> ");
+        scanf("%d", &choice);
+        getchar();
+        clear();
+
+        if(choice==1){
+            clear();
+            createAtividade(ambiente->uniqueID);
+        }else if(choice==2){
+            clear();
+            exportAmbiente(ambiente->uniqueID);
+        }else if(choice==0){
+            clear();
+            break;
+        }else{
+            printf("[Opcao invalida]\n\n");
+        }
+    }while(choice != 0);
 }
 
 // GESTOR MENU //

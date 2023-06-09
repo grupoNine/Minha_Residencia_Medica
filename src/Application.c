@@ -90,7 +90,7 @@ bool solicitarAvaliacao(User* residente, User* preceptor) {
 }
 
 // PRECEPTOR MENU //
-
+// AVALIACAO //
 AvaliacaoNode* getAvaliacoesForPreceptor(char* preceptorID) {
     AvaliacaoNode* head = loadAvaliacoesForPreceptor(preceptorID);
     if (head==NULL){
@@ -152,6 +152,182 @@ bool avaliarResidente(User* preceptor, User* residente, float nota1, float nota2
     avaliacao.timestamp = time(NULL);
     avaliacao.avaliado = true;
     return removeUserAvaliacoes(preceptor, avaliacao) && saveUserAvaliacoes(residente, avaliacao);
+}
+
+// AMBIENTE DE APRENDIZAGEM //
+
+void createAmbienteAprendizagem() {
+    printf("CRIAR AMBIENTE DE APRENDIZAGEM\n\n");
+    AmbienteAprendizagem* newAmbiente = malloc(sizeof(AmbienteAprendizagem));
+    if(newAmbiente == NULL){
+        printf("[Erro de alocacao de memoria]\n");
+        return;
+    }
+    printf("Nome do Ambiente de Aprendizagem:\n>>> ");
+    scanf("%50[^\n]", newAmbiente->name);
+    getchar();
+    printf("\nDescricao do Ambiente de Aprendizagem:\n>>> ");
+    scanf("%1000[^\n]", newAmbiente->description);
+    getchar(); 
+    strcpy(newAmbiente->preceptorID, current.user->uniqueID);
+    char* uniqueID = createUniqueIDForAmbiente(newAmbiente->name);
+    strcpy(newAmbiente->uniqueID, uniqueID);
+    free(uniqueID);
+    clear();
+    bool success = saveAmbiente(newAmbiente);
+    if(success){
+        printf("[Ambiente de Aprendizagem criado com sucesso]\n\n");
+    }else{
+        printf("[Erro ao criar Ambiente de Aprendizagem]\n\n");
+    }
+    free(newAmbiente);
+}
+
+char* createUniqueIDForAmbiente(char* fullName) {
+    int counter = 2;
+    char tempID[51] = "";
+    char nameCopy[51] = "";
+    strncpy(nameCopy, fullName, 50);
+    nameCopy[50] = '\0';
+    char *token = strtok(nameCopy, " ");
+    char* uniqueID = malloc(sizeof(char) * 51);
+    *uniqueID = '\0';
+    while(token!=NULL){
+        strncat(uniqueID, token, 1);
+        token = strtok(NULL, " ");
+    }
+    for (int i=0; uniqueID[i]!='\0'; i++){
+        uniqueID[i] = tolower(uniqueID[i]);
+    }
+    strncpy(tempID, uniqueID, 50);
+    tempID[50] = '\0';
+    while (getAmbienteByUniqueID(uniqueID)!=NULL) {
+        snprintf(uniqueID, 50, "%s%d", tempID, counter++);
+    }
+    return uniqueID;
+}
+
+AmbienteAprendizagem* getAmbienteByUniqueID(char* uniqueID) {
+    if (uniqueID ==NULL){
+        printf("[ID invalido]\n");
+        return NULL;
+    }
+    AmbienteAprendizagem** allAmbientes = getAllAmbientes();
+    if (allAmbientes==NULL){
+        printf("[Erro ao obter ambientes]\n");
+        return NULL;
+    }
+    AmbienteAprendizagem* ambiente = NULL;
+    for (int i=0; allAmbientes[i]!=NULL; i++){
+        if (strcmp(allAmbientes[i]->uniqueID, uniqueID)==0) {
+            ambiente = allAmbientes[i];
+            allAmbientes[i] = NULL;
+            break;
+        }
+    }
+    freeAllAmbientes(allAmbientes);
+    return ambiente;
+}
+
+AmbienteAprendizagem** getAllAmbientesForPreceptor(){
+    AmbienteAprendizagem** allAmbientes = getAllAmbientes();
+    if (allAmbientes == NULL){
+        return NULL;
+    }
+    int count = 0;
+    for (int i=0; allAmbientes[i]!=NULL; i++) {
+        if (strcmp(allAmbientes[i]->preceptorID, current.user->uniqueID) == 0) {
+            count++;
+        }
+    }
+    AmbienteAprendizagem** preceptorAmbientes = malloc((count+1)*sizeof(AmbienteAprendizagem*));
+    int j=0;
+    for (int i=0; allAmbientes[i]!=NULL; i++) {
+        if (strcmp(allAmbientes[i]->preceptorID, current.user->uniqueID)==0){
+            preceptorAmbientes[j] = allAmbientes[i];
+            j++;
+        } else {
+            free(allAmbientes[i]);
+        }
+    }
+    preceptorAmbientes[count] = NULL;
+    free(allAmbientes);
+    return preceptorAmbientes;
+}
+
+void exportAmbiente(char* uniqueID) {
+    bool exportSuccessful = exportAmbienteInfo(uniqueID);
+    if (exportSuccessful){
+        printf("[Ambiente exportado com sucesso]\n\n");
+    } else {
+        printf("[Falha ao exportar o ambiente]\n\n");
+    }
+}
+
+void freeAllAmbientes(AmbienteAprendizagem** ambientes) {
+    for (int i=0; ambientes[i]!=NULL; i++) {
+        free(ambientes[i]);
+    }
+    free(ambientes);
+}
+
+//atividades//
+AtividadeNode* createAtividade(char* ambienteID) {
+    AtividadeNode* atividades = NULL;
+    AtividadeNode* last = NULL;
+    char name[101], description[1001];
+    int daysPerWeek;
+    
+    printf("Nome da Atividade:\n>>> ");
+    scanf("%100[^\n]", name);
+    getchar();
+    printf("\n\nDescricao da Atividade:\n>>> ");
+    scanf("%1000[^\n]", description);
+    getchar();
+    printf("Quantos vezes por semana esta atividade ocorrera?\n\n>>> ");
+    scanf("%d", &daysPerWeek);
+    getchar();
+    for (int i=0;i<daysPerWeek;i++){
+        printf("Ocorrencia %d da atividade.\n", i+1);
+        printf("Escolha o dia da semana:\n");
+        printf("[1] Segunda-feira\n");
+        printf("[2] Terca-feira\n");
+        printf("[3] Quarta-feira\n");
+        printf("[4] Quinta-feira\n");
+        printf("[5] Sexta-feira\n");
+        printf("[6] Sabado\n");
+        printf("[7] Domingo\n\n>>> ");
+        int weekday;
+        scanf("%d",&weekday);
+        getchar();
+        if(weekday<1||weekday>7) {
+            printf("Dia da semana inválido. Tente novamente.\n");
+            i--;
+            continue;
+        }
+        struct tm start_time, end_time;
+        printf("Hora de inicio (HH:MM): ");
+        scanf("%d:%d", &start_time.tm_hour, &start_time.tm_min);
+        getchar();
+        printf("Hora de termino (HH:MM): ");
+        scanf("%d:%d", &end_time.tm_hour, &end_time.tm_min);
+        getchar();
+        AtividadeNode* newNode = malloc(sizeof(AtividadeNode));
+        strcpy(newNode->atividade.name, name);
+        strcpy(newNode->atividade.description, description);
+        newNode->atividade.weekday=weekday;
+        newNode->atividade.start_time=start_time;
+        newNode->atividade.end_time=end_time;
+        newNode->next = NULL;
+        if (atividades == NULL) {
+            atividades = newNode;
+        } else {
+            last->next = newNode;
+        }
+        last = newNode;
+    }
+    saveAtividadeForAmbiente(ambienteID, atividades);
+    return atividades;
 }
 
 // GESTOR MENU //
@@ -296,8 +472,6 @@ char* createUniqueID(char* fullName) {
     return uniqueID;
 }
 
-// GET //
-
 User* getUserByUniqueID(char* uniqueID) {
     if (uniqueID==NULL){
         printf("[ID invalido]\n");
@@ -319,8 +493,6 @@ User* getUserByUniqueID(char* uniqueID) {
     freeAllUsers(allUsers);
     return NULL;
 }
-
-// FREE //
 
 void freeAllUsers(User** users) {
     for (int i=0; users[i]!=NULL; i++) {

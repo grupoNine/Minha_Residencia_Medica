@@ -8,6 +8,133 @@
 #include "Application.h"
 #include "Presentation.h"
 
+// AMBIENTE DE APRENDIZAGEM //
+
+//ambiente//
+bool saveAmbiente(AmbienteAprendizagem* ambiente) {
+    char filename[100] = "db/ambientes/ambientes.txt";
+    FILE* fp =fopen(filename, "a");
+    if (fp == NULL) {
+        printf("[Erro ao abrir o arquivo]\n");
+        return false;
+    }
+    fprintf(fp, "UNIQUE_ID: %s\n", ambiente->uniqueID);
+    fprintf(fp, "NOME: %s\n", ambiente->name);
+    fprintf(fp, "DESCRICAO: %s\n", ambiente->description);
+    fprintf(fp, "PRECEPTOR_ID: %s\n", ambiente->preceptorID);
+    fprintf(fp, "----------------\n");
+    fclose(fp);
+    return true;
+}
+
+AmbienteAprendizagem** getAllAmbientes() {
+    FILE *fp=fopen("db/ambientes/ambientes.txt", "r");
+    if (!fp){
+        printf("[Erro ao abrir o arquivo]\n");
+        return NULL;
+    }
+    char line[300];
+    int count=0;
+    AmbienteAprendizagem** ambientes=NULL;
+    while(fgets(line, sizeof(line), fp)) {
+        if (strstr(line, "UNIQUE_ID:")==line) {
+            AmbienteAprendizagem* ambiente =malloc(sizeof(AmbienteAprendizagem));
+            sscanf(line, "UNIQUE_ID: %s\n", ambiente->uniqueID);
+            fgets(line, sizeof(line), fp); 
+            sscanf(line, "NOME: %100[^\n]",ambiente->name);
+//
+            fgets(line, sizeof(line), fp);
+            char *descricaoStart = strchr(line, ':');
+            if (descricaoStart && *(descricaoStart+1)== ' '){
+                descricaoStart+=2;
+            }else if(descricaoStart){
+                descricaoStart+=1;
+            }
+            snprintf(ambiente->description, sizeof(ambiente->description), "%s", descricaoStart);
+//
+            fgets(line, sizeof(line), fp);
+            sscanf(line, "PRECEPTOR_ID: %s\n", ambiente->preceptorID);
+            ambientes = realloc(ambientes,(count+1)*sizeof(AmbienteAprendizagem*));
+            ambientes[count]=ambiente;
+            count++;
+        }
+    }
+    fclose(fp);
+    ambientes = realloc(ambientes, (count+1)*sizeof(AmbienteAprendizagem*));
+    ambientes[count]=NULL;
+    return ambientes;
+}
+
+void saveAtividadeForAmbiente(char* ambienteID, AtividadeNode* atividades) {
+    char filename[100];
+    FILE *file;
+    sprintf(filename, "db/ambientes/atividades_%s.txt", ambienteID);
+    file = fopen(filename, "a");
+    if (file==NULL) {
+        printf("Nao foi possível abrir o arquivo %s\n", filename);
+        return;
+    }
+    AtividadeNode* currentNode=atividades;
+    while(currentNode!=NULL){
+        fprintf(file, "Nome: %s\n", currentNode->atividade.name);
+        fprintf(file, "Descricao: %s\n", currentNode->atividade.description);
+        fprintf(file, "Dia da semana: %d\n", currentNode->atividade.weekday);
+        fprintf(file, "Hora de inicio: %02d:%02d\n", currentNode->atividade.start_time.tm_hour, currentNode->atividade.start_time.tm_min);
+        fprintf(file, "Hora de termino: %02d:%02d\n", currentNode->atividade.end_time.tm_hour, currentNode->atividade.end_time.tm_min);
+        fprintf(file, "\n");
+        currentNode = currentNode->next;
+    }
+    fclose(file);
+    clear();
+    printf("[Ambiente salvo com sucesso]\n\n");
+}
+bool exportAmbienteInfo(char* uniqueID) {
+    char exportFilename[100];
+    FILE *exportFile;
+    AmbienteAprendizagem** allAmbientes = getAllAmbientes();
+    if (allAmbientes==NULL){
+        printf("[Noa foi possivel obter os ambientes]\n");
+        return false;
+    }
+    AmbienteAprendizagem* selectedAmbiente=NULL;
+    for (int i=0; allAmbientes[i]!=NULL;i++){
+        if (strcmp(allAmbientes[i]->uniqueID, uniqueID)==0) {
+            selectedAmbiente=allAmbientes[i];
+            break;
+        }
+    }
+    if (selectedAmbiente==NULL){
+        printf("[Ambiente não encontrado]\n");
+        return false;
+    }
+    sprintf(exportFilename, "export/ambienteinfo_%s.txt", uniqueID);
+    exportFile = fopen(exportFilename, "w");
+    if(exportFile==NULL) {
+        printf("[Nao foi possivel abrir o arquivo para exportacao %s]\n", exportFilename);
+        return false;
+    }
+    fprintf(exportFile, "ID: %s\n", selectedAmbiente->uniqueID);
+    fprintf(exportFile, "Nome: %s\n", selectedAmbiente->name);
+    fprintf(exportFile, "Descricao: %s\n", selectedAmbiente->description);
+    fprintf(exportFile, "Preceptor: %s\n\n", selectedAmbiente->preceptorID);
+    char filename[100];
+    sprintf(filename, "db/ambientes/atividades_%s.txt", selectedAmbiente->uniqueID);
+    FILE* atividadesFile = fopen(filename, "r");
+    if (atividadesFile==NULL){
+        fclose(exportFile);
+        printf("[Nao foi possivel abrir o arquivo de atividades]\n");
+        return false;
+    }
+    char line[300];
+    fprintf(exportFile, "Atividades:\n");
+    while (fgets(line, sizeof(line), atividadesFile)) {
+        fprintf(exportFile, "\t%s", line);
+    }
+    fclose(exportFile);
+    fclose(atividadesFile);
+    return true;
+}
+
 // QUADRO DE AVISOS //
 Aviso getAvisos() {
     FILE* fp = fopen("db/quadro_de_avisos/quadro_de_avisos.txt", "r");

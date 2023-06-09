@@ -1,0 +1,12 @@
+Nome: Emergencia Pediatrica
+Descricao: Plantao todas as tercas e quintas
+Dia da semana: 2
+Hora de inicio: 08:30
+Hora de termino: 10:30
+
+Nome: Emergencia Pediatrica
+Descricao: Plantao todas as tercas e quintas
+Dia da semana: 4
+Hora de inicio: 08:30
+Hora de termino: 10:30
+

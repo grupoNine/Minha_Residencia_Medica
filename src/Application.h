@@ -20,6 +20,17 @@ bool solicitarAvaliacao(User* residente, User* preceptor);
 AvaliacaoNode* getAvaliacoesForPreceptor(char* preceptorID) ;
 bool avaliarResidente(User* preceptor, User* residente, float nota1, float nota2, float nota3, char* feedback);
 
+//ambiente de aprendizagem//
+void createAmbienteAprendizagem();
+char* createUniqueIDForAmbiente(char* fullName);
+AmbienteAprendizagem* getAmbienteByUniqueID(char* uniqueID);
+AmbienteAprendizagem** getAllAmbientesForPreceptor();
+void exportAmbiente(char* uniqueID);
+void freeAllAmbientes(AmbienteAprendizagem** ambientes);
+AmbienteAprendizagem** getAllAmbientesForPreceptor();
+
+//atividades//
+AtividadeNode* createAtividade(char* ambienteID);
 
 // GESTOR MENU //
 //signup//

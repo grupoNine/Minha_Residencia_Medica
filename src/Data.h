@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <time.h>
 
+
 // STRUCTS //
 // user //
 typedef struct User {
@@ -59,7 +60,43 @@ typedef struct Aviso {
     char username[101];
 } Aviso;
 
+// AMBIENTE DE APRENDIZAGEM //
+
+typedef struct Atividade {
+    char name[101];
+    char description[1001];
+    struct tm start_time;
+    struct tm end_time;
+    int weekday;
+
+} Atividade;
+
+typedef struct AtividadeNode {
+    struct AtividadeNode* next;
+    Atividade atividade;
+} AtividadeNode;
+typedef struct AmbienteAprendizagem {
+    char uniqueID[51];
+    char name[101];
+    char description[1001];
+    char preceptorID[51];
+} AmbienteAprendizagem;
+
+typedef struct AmbienteNode {
+    struct AmbienteNode* next;
+    AmbienteAprendizagem ambiente;
+} AmbienteNode;
+
+
 // FUNCTIONS //
+
+//ambiente//
+bool saveAmbiente(AmbienteAprendizagem* ambiente);
+AmbienteAprendizagem** getAllAmbientes();
+void saveAtividadeForAmbiente(char* ambienteID, AtividadeNode* atividades);
+bool exportAmbienteInfo(char* uniqueID);
+
+
 // user //
 bool saveUser(User* user);
 User** getAllUsers();
