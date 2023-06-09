@@ -74,7 +74,8 @@
 
 ### 📐 Arquitetura
 
-<img width="820" alt="arquitetura_" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/005a8c29-7edb-435a-a480-d8e4a0f26faa">
+
+<img width="3264" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/662f6dd4-d666-439b-bf48-02c2da2944c6">
 
 <img width="1668" alt="Arquitetura (3)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/7a6ea8dc-3201-40e9-a5e1-b71dd750c4f8">
 
@@ -104,10 +105,10 @@
 
 ### 📖 Referências
 
-- **[21st Century C](https://www.oreilly.com/library/view/21st-century-c/9781491904428/)** A "Part I.The Environment" foi particulamente esclarecedora para melhorar as práticas em relação a compilação, linkagem, debug, teste, documentação, shell e versionamento. Foram úteis algumas das práticas sugeridas principalmente no uso do makefile, debug e testes.
-- **[Engenharia de Software](https://engsoftmoderna.info/)** Foi tomado como referência em especial em relação a modelagem, arquitetura e princípios de software. Referências  pontuais citadas secundariamente neste livro foram consultadas diretamente como fonte primária.
-- **[C: the complete reference](https://www.amazon.com.br/C-Complete-Reference-Herbert-Schildt/dp/0072121246)** Para consulta sobre informações e conhecimentos técnicas.
-- **[GeeksForGeeks.org](https://www.geeksforgeeks.org/c-programming-language/)** Site para consultas e exemplos de códigos e técnicas.
+- **[21st Century C](https://www.oreilly.com/library/view/21st-century-c/9781491904428/)** "Part I.The Environment" 
+- **[Engenharia de Software](https://engsoftmoderna.info/)** 
+- **[C: the complete reference](https://www.amazon.com.br/C-Complete-Reference-Herbert-Schildt/dp/0072121246)** 
+- **[GeeksForGeeks.org](https://www.geeksforgeeks.org/c-programming-language/)**
 
 ---
 
