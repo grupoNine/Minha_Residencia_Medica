@@ -1,20 +1,23 @@
 # ⚕️ Minha Residência Médica - MRM ⚕️
 
-{{breve descrição do projeto}}
+O MRM é um aplicativo desenvolvido em C para a disciplina de Projetos II dos cursos de Ciência da Computação e Design da [CESAR School](https://www.cesar.school/).
+Tivemos como cliente o Hospital das Clínicas da Universidade Federal de Pernambuco.
+
+Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.school/infinity
 
 
-  - [👣 Instalação](#-setup)
-  - [🖥️ Programa](#-arquitetura)
-  - [📐 Arquitetura](#-arquitetura)
-  - [🔎 Testes](#-testes)
-  - [🛠️ Ferramentas](#-ferramentas)
-  - [📖 Referências](#-referências)
-  - [♾️ Projeto](#-opcao-04)
-  - [👨‍💻 Team](#-team)
+  - [👣 Instalação](#instalação)
+  - [🖥️ Aplicativo](#aplicativo)
+  - [📐 Arquitetura](#arquitetura)
+  - [🔎 Testes](#testes)
+  - [🛠️ Ferramentas](#ferramentas)
+  - [📖 Referências](#referências)
+  - [👨‍💻 Team](#team)
 
 ---
 
-### 👣 Instalação
+👣 
+### Instalação
 
 - Sugerimos utilizar o **VS Code** e **MinGW**[🔗](https://www.mingw-w64.org/) para este projeto:
 
@@ -40,70 +43,102 @@
 
 - **Lista de comandos**
 
-// Compila e executa o programa principal.
-  `make run` 
-  ou
-   `gcc -g -I./src src/presentation.c src/application.c src/data.c main.c -o build/main && ./build/main`
+  -> Compila e executa o programa principal.
+    `make run` 
+    ou
+     `gcc -g -I./src src/presentation.c src/application.c src/data.c main.c -o build/main && ./build/main`
 
-//Compila e executa o programa principal no modo debug
- `make run-debug`
- ou
- `gcc -g -I./src src/presentation.c src/application.c src/data.c main.c -o build/main && gdb build/main`
-
-
-// Compila e executa os testes.
- `make test` 
- ou
- `gcc -g -I./src src/presentation.c src/application.c src/data.c tests/tests.c -o build/Tests && ./build/Tests > tests/tests.txt`
-
-// Compila e executa os testes no modo debug
- `make test-debug`
- ou
-`gcc -g -I./src src/presentation.c src/application.c src/data.c tests/tests.c -o build/Tests && gdb build/Tests`
-
-// Limpa os arquivos temporários e o executável
- `make clean` 
-
----
-
-### 🖥️ Programa
+  -> Compila e executa o programa principal no modo debug
+   `make run-debug`
+   ou
+   `gcc -g -I./src src/presentation.c src/application.c src/data.c main.c -o build/main && gdb build/main`
 
 
+  -> Compila e executa os testes.
+   `make test` 
+   ou
+   `gcc -g -I./src src/presentation.c src/application.c src/data.c tests/tests.c -o build/Tests && ./build/Tests > tests/tests.txt`
 
----
+  -> Compila e executa os testes no modo debug
+   `make test-debug`
+   ou
+  `gcc -g -I./src src/presentation.c src/application.c src/data.c tests/tests.c -o build/Tests && gdb build/Tests`
 
-### 📐 Arquitetura
-
-
-<img width="3264" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/662f6dd4-d666-439b-bf48-02c2da2944c6">
-
-<img width="1668" alt="Arquitetura (3)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/7a6ea8dc-3201-40e9-a5e1-b71dd750c4f8">
-
-<img width="3517" alt="Arquitetura (2)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/4d626814-fe42-41d8-8b48-7894adf0f9cd">
-
-<img width="2885" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/86b109a9-1454-401e-acf2-92c61cbd2e89">
-
-<img width="2885" alt="Arquitetura (1)" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/219c8456-5945-4a08-a0a6-c6de5983df23">
-
+  -> Limpa os arquivos temporários e o executável
+   `make clean` 
+   
+  -> Foram criados usuários padrões para fim de testes, são:
+  
+  Residente -> usuário: `jtr` senha: `1234`
+  
+  Preceptora -> usuário: `dtp` senha: `1234`
+  
+  Gestora -> usuário: `rtg` senha:`1234`
+  
 
 ---
 
-### 🔎 Testes
+🖥️
+###  Aplicativo
+
+  O MRM tem como objetivo gerenciar as atividades da Residência do HC:
+
+  O residente pode visualizar avisos e suas atividades dárias, além de marcar presença, solicitar avaliação e selecionar seu ambiente de aprendizagem atual.
+
+  O preceptor pode avaliar o residente, escrever no quadro de avisos e criar seu ambiente de aprendizagem e suas atividades.
+
+  O gestor pode exportar avaliações e frequências mensais de todos os residentes, assim como escrever no quadro de avisos e cadastrar novos usários.
+
+  <img width="2205" alt="residente" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/4dcd6c0d-6146-418f-adf3-6f3d0acf7f74">
+
+  <img width="2905" alt="preceptor" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/4543de81-70f9-4918-8ab9-063127fcd31d">
+
+  <img width="2885" alt="gestor" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/6494de31-faa0-4a5c-b18a-4b77f31b84f3">
+
 
 ---
 
-### 🛠️ Ferramentas
+📐 
+### Arquitetura
 
--   **[C](https://www.open-std.org/jtc1/sc22/wg14/)**
--   **[MinGW-w64](https://www.mingw-w64.org/)**
--   **[Make](https://www.gnu.org/software/make/)**
--   **[Figma](https://www.figma.com/)**
--   **[Github](https://github.com/)**
--   **[Visual Studio Code](https://code.visualstudio.com/)**
+  [FIGMA](https://www.figma.com/file/N0Fp63qzlDYMZJPfZjzGFT/Arquitetura?type=whiteboard&node-id=0%3A1&t=NLGScytnXbGCC0zG-1)
+
+  <img width="5176" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/8cdf600f-dfbc-4145-abdc-d7eb4bafe4eb">
+
+  <img width="1464" alt="datalayer" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/a7a500df-0745-4053-b4d1-61417cf05c97">
+
+  <img width="346" alt="folder" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/71b6d5ed-bbd0-4730-8860-04839d488d60">
 
 ---
 
-### 📖 Referências
+🔎
+### Testes
+
+Nosso maior aliado nos testes foi o debugger GNU gdb: o comando do makefile `make test` nos permitiu observar o comportamento do programa e encontrar de forma precisa por bugs no código.
+
+Foram recorrentes falhas de 'segfault' por conta gestão da alocação de memória típica de C, o comando do gdb `backtrace` foi útil em apontar essa e outras falhas.
+
+O início do desenvolvimento, na construção dos menus, login e signup utilizamos testes enquanto produziamos o código e setup inicial.
+Como esses códigos iniciais funcionaram como protótipos para o restante do código, o número de bugs e falhas mais imediatas se reduziram, e passamos a testar mais isoladamente e utilizar mais o gdb.
+
+Para isso, além de constantes testes exploratórios, automatizamos no makefile a execução do arquivo tests.c com funções para testes unitários e de integração, que geram um arquivo tests.txt como relatório.
+
+---
+
+🛠️ 
+### Ferramentas
+
+  -   **[C](https://www.open-std.org/jtc1/sc22/wg14/)**
+  -   **[MinGW-w64](https://www.mingw-w64.org/)**
+  -   **[Make](https://www.gnu.org/software/make/)**
+  -   **[Figma](https://www.figma.com/)**
+  -   **[Github](https://github.com/)**
+  -   **[Visual Studio Code](https://code.visualstudio.com/)**
+
+---
+
+📖 
+### Referências
 
 - **[21st Century C](https://www.oreilly.com/library/view/21st-century-c/9781491904428/)** "Part I.The Environment" 
 - **[Engenharia de Software](https://engsoftmoderna.info/)** 
@@ -112,24 +147,8 @@
 
 ---
 
-### ♾️ Projeto
+👨‍💻
+### Team
 
+<img width="602" alt="image" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/bc4b7da8-0977-4505-ad36-0f25971cd3c8">
 
-
----
-
-### 👨‍💻 Team
-
-<table>
-  <tr>
-    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/116602650?v=4" width="100px;" alt=""/><br /><sub><b>Gislaine Reis</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/116669790?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Cortez</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/111138996?v=4" width="100px;" alt=""/><br /><sub><b>Pedro Coelho</b></sub></a><br /></a></td>
-   <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D03AQEWkpGgAcLo1g/profile-displayphoto-shrink_800_800/0/1681732287722?e=1689811200&v=beta&t=vVd3v_YpV9SKdRb5PsvHOVR-iCTeRcIttLRth9ARC-Q" width="100px;" alt=""/><br /><sub><b>Letícia Pinheiro</b></sub></a><br /></a></td>   
-    <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D03AQGwFWKSKKaDUA/profile-displayphoto-shrink_800_800/0/1679698808237?e=1689811200&v=beta&t=0x_3B1zlS50soHbgrMand6jJHPZQZy49NfavBw95Fxc" width="100px;" alt=""/><br /><sub><b>Bruna Carvalho</b></sub></a><br /></a></td>
-     <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D35AQEbX5ogC2YVRg/profile-framedphoto-shrink_800_800/0/1642452377945?e=1685106000&v=beta&t=4dC0vixL13cvxCBPV3TXB-GEYBrB3m7R6Aa3AohXQco" width="100px;" alt=""/><br /><sub><b>Guilherme Lopes</b></sub></a><br /></a></td>   
-   
-   
-
-    
-  </tr>
