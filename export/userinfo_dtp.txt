@@ -1,0 +1,7 @@
+[Informacoes do usuario]
+ID Unico: dtp
+Nome Completo: Deborah Teste Preceptora
+Nome de Exibicao: Deborah Preceptora
+Senha: D8NNg
+Nivel de Acesso: 2
+Data de Criacao: 12-06-2023 19:08:16

@@ -14,6 +14,11 @@ void writeAviso();
 //avaliacao//
 PreceptorNameNode* getPreceptorNames();
 bool solicitarAvaliacao(User* residente, User* preceptor);
+//frequencia//
+void marcarFrequencia(const char *residenteID);
+// ambiente aprendizagem //
+void sortCalendario(AtividadeNode** head);
+void selecionarAmbienteAprendizagemMenu();
 
 // PRECEPTOR MENU //
 //avaliacao//
@@ -27,10 +32,10 @@ AmbienteAprendizagem* getAmbienteByUniqueID(char* uniqueID);
 AmbienteAprendizagem** getAllAmbientesForPreceptor();
 void exportAmbiente(char* uniqueID);
 void freeAllAmbientes(AmbienteAprendizagem** ambientes);
-AmbienteAprendizagem** getAllAmbientesForPreceptor();
 
 //atividades//
 AtividadeNode* createAtividade(char* ambienteID);
+
 
 // GESTOR MENU //
 //signup//
@@ -39,6 +44,10 @@ bool createUser(User** user, char* fullName, int level);
 char* createRandomPassword();
 char* createExhibitionName(char* fullName);
 char* createUniqueID(char* fullName);
+//frequencia//
+void exportFrequenciasMenu();
+//avaliacao//
+void exportAvaliacoesMenu();
 
 // GET //
 User* getUserByUniqueID(char* uniqueID);

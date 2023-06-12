@@ -1,0 +1,7 @@
+[Informacoes do usuario]
+ID Unico: rtg
+Nome Completo: Roberta Teste Gestora
+Nome de Exibicao: Roberta Gestora
+Senha: 65JLP
+Nivel de Acesso: 3
+Data de Criacao: 12-06-2023 19:08:44

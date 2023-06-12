@@ -12,12 +12,12 @@
 ------ Nomes de Preceptores ------
 ---------------------------------
 Preceptor 1
-Nome de Exibição: Leticia Paoelschi
-ID Único: lpp
+Nome de Exibição: -----------teste Inicializado---------
+ID Único: -iti
 ---------------------------------
 Preceptor 2
-Nome de Exibição: Residente Teste
-ID Único: rtt2
+Nome de Exibição: A
+ID Único: a
 ---------------------------------
 Preceptor 3
 Nome de Exibição: preceptor1 exhibitionName
@@ -41,12 +41,12 @@ ID Único: p3
 ------ Teste 0 : Nome ok, level ok ------
 [2J[1;1H[Informacoes do novo usuario]
 
-ID Unico: -iti
+ID Unico: -iti2
 Nome Completo: -----------teste Inicializado Teste Inicializado---------
 Nome de Exibicao: -----------teste Inicializado---------
-Senha: Q6Fi4
+Senha: 2fyq8
 Nivel de Acesso: 2
-Data de Criacao: 09-06-2023 10:36:07
+Data de Criacao: 12-06-2023 19:03:58
 
 
 
@@ -66,12 +66,12 @@ Data de Criacao: 09-06-2023 10:36:07
 ------ Teste 3 : nome com 1 letra ------
 [2J[1;1H[Informacoes do novo usuario]
 
-ID Unico: a
+ID Unico: a5
 Nome Completo: A
 Nome de Exibicao: A
-Senha: Q6Fi4
+Senha: 2fyq8
 Nivel de Acesso: 2
-Data de Criacao: 09-06-2023 10:36:07
+Data de Criacao: 12-06-2023 19:03:58
 
 
 
@@ -81,12 +81,12 @@ Data de Criacao: 09-06-2023 10:36:07
 ------ Teste 4 : nome com whitespace no inicio e no final ------
 [2J[1;1H[Informacoes do novo usuario]
 
-ID Unico: a2
+ID Unico: a6
 Nome Completo: Abcd
 Nome de Exibicao: Abcd
-Senha: Q6Fi4
+Senha: 2fyq8
 Nivel de Acesso: 1
-Data de Criacao: 09-06-2023 10:36:07
+Data de Criacao: 12-06-2023 19:03:58
 
 
 
@@ -106,12 +106,12 @@ Data de Criacao: 09-06-2023 10:36:07
 ------ Teste 7 : level com float ------
 [2J[1;1H[Informacoes do novo usuario]
 
-ID Unico: a3
+ID Unico: a7
 Nome Completo: Abcd
 Nome de Exibicao: Abcd
-Senha: Q6Fi4
+Senha: 2fyq8
 Nivel de Acesso: 1
-Data de Criacao: 09-06-2023 10:36:07
+Data de Criacao: 12-06-2023 19:03:58
 
 
 
@@ -121,12 +121,12 @@ Data de Criacao: 09-06-2023 10:36:07
 ------ Teste 8 : nome com 100 caracteres sem espaços em branco ------
 [2J[1;1H[Informacoes do novo usuario]
 
-ID Unico: a4
+ID Unico: a8
 Nome Completo: Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 Nome de Exibicao: Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-Senha: Q6Fi4
+Senha: 2fyq8
 Nivel de Acesso: 1
-Data de Criacao: 09-06-2023 10:36:07
+Data de Criacao: 12-06-2023 19:03:58
 
 
 
@@ -136,12 +136,12 @@ Data de Criacao: 09-06-2023 10:36:07
 ------ Teste 9 : nome com 1 letra e 1 espaço em branco repetidamente até um total de 100 caracteres ------
 [2J[1;1H[Informacoes do novo usuario]
 
-ID Unico: aaaaaaaaaaaaaaaaaaaaaaaaa
+ID Unico: aaaaaaaaaaaaaaaaaaaaaaaaa2
 Nome Completo: A A A A A A A A A A A A A A A A A A A A A A A A A
 Nome de Exibicao: A A
-Senha: Q6Fi4
+Senha: 2fyq8
 Nivel de Acesso: 1
-Data de Criacao: 09-06-2023 10:36:07
+Data de Criacao: 12-06-2023 19:03:58
 
 
 
@@ -151,12 +151,12 @@ Data de Criacao: 09-06-2023 10:36:07
 ------ Teste 10 : TESTE FINALIZADO ------
 [2J[1;1H[Informacoes do novo usuario]
 
-ID Unico: -ftf
+ID Unico: -ftf2
 Nome Completo: -----------teste Finalizado Teste Finalizado---------
 Nome de Exibicao: -----------teste Finalizado---------
-Senha: Q6Fi4
+Senha: 2fyq8
 Nivel de Acesso: 1
-Data de Criacao: 09-06-2023 10:36:07
+Data de Criacao: 12-06-2023 19:03:58
 
 
 
@@ -175,16 +175,16 @@ Nome de Exibição: -----------teste Inicializado---------
 ID Único: -iti
 ---------------------------------
 Preceptor 2
-Nome de Exibição: A
-ID Único: a
+Nome de Exibição: -----------teste Inicializado---------
+ID Único: -iti2
 ---------------------------------
 Preceptor 3
-Nome de Exibição: Leticia Paoelschi
-ID Único: lpp
+Nome de Exibição: A
+ID Único: a5
 ---------------------------------
 Preceptor 4
-Nome de Exibição: Residente Teste
-ID Único: rtt2
+Nome de Exibição: A
+ID Único: a
 ---------------------------------
 Preceptor 5
 Nome de Exibição: preceptor1 exhibitionName

@@ -1,19 +1,49 @@
 ID: e
-Nome: Emergencia
-Descricao: Emergencia medica do hospital
+Nome: Enfermarias
+Descricao: Os horarios de ambulatorio dos residentes tem escala propria a confirmar com os preceptores
 
-Preceptor: p1
+Preceptor: dtp2
 
 Atividades:
-	Nome: Emergencia Pediatrica
-	Descricao: Plantao todas as tercas e quintas
-	Dia da semana: 2
-	Hora de inicio: 08:30
-	Hora de termino: 10:30
+	Nome: Evolucao
+	Descricao: Evolucoes de fim de semana devem ser divididas por duplas dos preceptores
+	Dia da semana: 1
+	Hora de inicio: 07:00
+	Hora de termino: 11:00
 	
-	Nome: Emergencia Pediatrica
-	Descricao: Plantao todas as tercas e quintas
+	Nome: Evolucao
+	Descricao: Evolucoes de fim de semana devem ser divididas por duplas dos preceptores
+	Dia da semana: 2
+	Hora de inicio: 07:00
+	Hora de termino: 11:00
+	
+	Nome: Evolucao
+	Descricao: Evolucoes de fim de semana devem ser divididas por duplas dos preceptores
+	Dia da semana: 3
+	Hora de inicio: 07:00
+	Hora de termino: 11:00
+	
+	Nome: Evolucao
+	Descricao: Evolucoes de fim de semana devem ser divididas por duplas dos preceptores
 	Dia da semana: 4
-	Hora de inicio: 08:30
-	Hora de termino: 10:30
+	Hora de inicio: 07:00
+	Hora de termino: 11:00
+	
+	Nome: Evolucao
+	Descricao: Evolucoes de fim de semana devem ser divididas por duplas dos preceptores
+	Dia da semana: 5
+	Hora de inicio: 07:00
+	Hora de termino: 11:00
+	
+	Nome: Evolucao
+	Descricao: Evolucoes de fim de semana devem ser divididas por duplas dos preceptores
+	Dia da semana: 6
+	Hora de inicio: 07:00
+	Hora de termino: 11:00
+	
+	Nome: Evolucao
+	Descricao: Evolucoes de fim de semana devem ser divididas por duplas dos preceptores
+	Dia da semana: 7
+	Hora de inicio: 07:00
+	Hora de termino: 11:00
 	

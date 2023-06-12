@@ -12,6 +12,8 @@ void userInterface(User* user);
 void residenteMenu();
 //avaliacao//
 void solicitarAvaliacaoMenu();
+//calendario//
+void printCalendario(const char* residenteID);
 
 // PRECEPTOR MENU //
 void preceptorMenu();

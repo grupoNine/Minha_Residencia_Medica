@@ -89,6 +89,21 @@ bool solicitarAvaliacao(User* residente, User* preceptor) {
     return saveUserAvaliacoes(preceptor, avaliacao);
 }
 
+void marcarFrequencia(const char *residenteID) {
+    Frequencia frequencia;
+    strcpy(frequencia.residenteID, residenteID);
+    time_t t;
+    struct tm *timeinfo;
+    time(&t);
+    timeinfo = localtime(&t);
+    sprintf(frequencia.data, "%02d/%02d/%04d", timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900);
+    printf("Digite a hora de chegada (HH:MM):\n\n>>> ");
+    scanf("%5s", frequencia.hora_inicio);
+    printf("Digite a hora de saida (HH:MM):\n\n>>> ");
+    scanf("%5s", frequencia.hora_fim);
+    saveFrequencia(&frequencia);
+}
+
 // PRECEPTOR MENU //
 // AVALIACAO //
 AvaliacaoNode* getAvaliacoesForPreceptor(char* preceptorID) {
@@ -330,7 +345,95 @@ AtividadeNode* createAtividade(char* ambienteID) {
     return atividades;
 }
 
+// calendario - residente //
+
+void sortCalendario(AtividadeNode** head) {
+    if (*head ==NULL || (*head)->next ==NULL) {
+        return;
+    }
+    int trocado;
+    AtividadeNode *ptr1;
+    AtividadeNode *last = NULL;
+    do {
+        trocado = 0;
+        ptr1 = *head;
+        while (ptr1->next != last) {
+            if (ptr1->atividade.weekday > ptr1->next->atividade.weekday ||
+                (ptr1->atividade.weekday==ptr1->next->atividade.weekday &&
+                (ptr1->atividade.start_time.tm_hour > ptr1->next->atividade.start_time.tm_hour ||
+                (ptr1->atividade.start_time.tm_hour==ptr1->next->atividade.start_time.tm_hour &&
+                ptr1->atividade.start_time.tm_min > ptr1->next->atividade.start_time.tm_min)))) {
+                Atividade temp = ptr1->atividade;
+                ptr1->atividade = ptr1->next->atividade;
+                ptr1->next->atividade = temp;
+                trocado = 1;
+            }
+            ptr1 = ptr1->next;
+        }
+        last = ptr1;
+    } while (trocado);
+}
+
+
+void selecionarAmbienteAprendizagemMenu() {
+    AmbienteAprendizagem** ambientes = getAllAmbientes();
+    if(ambientes==NULL){
+        clear();
+        printf("[Erro ao obter ambientes]\n");
+        return;
+    }
+
+    printf("Selecione o ambiente de aprendizagem:\n\n");
+    int i;
+    for(i=0; ambientes[i]!=NULL; i++){
+        printf("[%d] %s\n", i+1, ambientes[i]->name);
+    }
+    int count = i;
+    int choice;
+    printf("[0] Voltar\n\n>>> ");
+    scanf("%d", &choice);
+    getchar();
+    if(choice==0){
+        clear();
+        return;
+    }else if(choice>0 && choice<=count){
+        clear();
+        copyAtividadesToCalendario(ambientes[choice-1]->uniqueID, current.user->uniqueID);
+    } else {
+        clear();
+        printf("[Opcao invalida]\n\n");
+    }
+}
 // GESTOR MENU //
+
+// FREQUENCIA //
+
+void exportFrequenciasMenu() {
+    int mes;
+    printf("Digite o mes dejado (1-12):\n\n>>> ");
+    scanf("%d", &mes);
+    getchar();
+    if (mes<1 || mes>12) {
+        printf("[Numero de mes invalido]\n");
+        return;
+    }
+    exportFrequencias(mes);
+}
+
+// AVALIACAO //
+
+void exportAvaliacoesMenu() {
+    int mes;
+    printf("Digite o mes desejado (1-12):\n\n>>> ");
+    scanf("%d", &mes);
+    getchar();  
+    if (mes<1 || mes>12) {
+        printf("[Numero de mes invalido]\n");
+        return;
+    }
+    exportAvaliacoes(mes);
+}
+
 
 // SIGNUP //
 

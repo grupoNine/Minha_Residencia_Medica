@@ -1,0 +1,7 @@
+[Informacoes do usuario]
+ID Unico: rtg2
+Nome Completo: Ricardo Teste Gestor
+Nome de Exibicao: Ricardo Gestor
+Senha: 6RzMD
+Nivel de Acesso: 3
+Data de Criacao: 12-06-2023 19:09:03

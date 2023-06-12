@@ -87,6 +87,14 @@ typedef struct AmbienteNode {
     AmbienteAprendizagem ambiente;
 } AmbienteNode;
 
+// FREQUENCIA //
+
+typedef struct Frequencia {
+    char residenteID[50];
+    char data[11]; // DD/MM/YYYY
+    char hora_inicio[6]; // HH:MM
+    char hora_fim[6];   // HH:MM
+} Frequencia;
 
 // FUNCTIONS //
 
@@ -95,6 +103,14 @@ bool saveAmbiente(AmbienteAprendizagem* ambiente);
 AmbienteAprendizagem** getAllAmbientes();
 void saveAtividadeForAmbiente(char* ambienteID, AtividadeNode* atividades);
 bool exportAmbienteInfo(char* uniqueID);
+
+//calendario//
+void copyAtividadesToCalendario(char* ambienteUniqueID, char* residenteUniqueID);
+AtividadeNode* getCalendario(const char* residenteID);
+
+//frequencia//
+void saveFrequencia(Frequencia *frequencia);
+void exportFrequencias(int month);
 
 
 // user //
@@ -106,7 +122,7 @@ bool exportUserInfo(User* user);
 bool saveUserAvaliacoes(User* user, Avaliacao avaliacao);
 bool removeUserAvaliacoes(User* user, Avaliacao avaliacao);
 AvaliacaoNode* loadAvaliacoesForPreceptor(char* preceptorID);
-bool saveUser(User* user);
+void exportAvaliacoes(int month);
 
 // quadro de avisos //
 

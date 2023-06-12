@@ -1,0 +1,7 @@
+[Informacoes do usuario]
+ID Unico: dtp2
+Nome Completo: Diana Teste Preceptora
+Nome de Exibicao: Diana Preceptora
+Senha: mCvhM
+Nivel de Acesso: 2
+Data de Criacao: 12-06-2023 19:08:30

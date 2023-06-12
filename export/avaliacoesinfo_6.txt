@@ -1,0 +1,18 @@
+================ Relatorio de Avaliacoes ================
+
+-----------------------------
+Mes                : Junho
+Nome do Residente  : Jonathas Teste Residente
+ID do Residente    : jtr
+Nome do Preceptor  : Deborah Teste Preceptora
+ID do Preceptor    : dtp
+
+Nota 1             : 10.00
+Nota 2             : 10.00
+Nota 3             : 10.00
+Media              : 10.00
+
+Feedback           : Jonathas e um excelente medico residente!
+-----------------------------
+
+==================== Fim do Relatório ====================

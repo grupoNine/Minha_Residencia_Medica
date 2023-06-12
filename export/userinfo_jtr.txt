@@ -1,0 +1,7 @@
+[Informacoes do usuario]
+ID Unico: jtr
+Nome Completo: Jonathas Teste Residente
+Nome de Exibicao: Jonathas Residente
+Senha: cfDUK
+Nivel de Acesso: 1
+Data de Criacao: 12-06-2023 19:07:30

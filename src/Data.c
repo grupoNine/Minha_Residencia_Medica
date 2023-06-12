@@ -8,9 +8,77 @@
 #include "Application.h"
 #include "Presentation.h"
 
+// FREQUENCIA //
+
+void saveFrequencia(Frequencia *frequencia) {
+    time_t t;
+    struct tm *timeinfo;
+    time(&t);
+    timeinfo = localtime(&t);
+    char filename[100];
+    sprintf(filename, "db/frequencia_residentes/frequencia_%d_%s.txt", timeinfo->tm_mon + 1, frequencia->residenteID);
+    FILE *file = fopen(filename, "a");
+    if (file){
+        fprintf(file, "%s,%s,%s,%s\n", frequencia->residenteID, frequencia->data, frequencia->hora_inicio, frequencia->hora_fim);
+        fclose(file);
+        clear();
+        printf("[Frequencia salva com sucesso]\n\n");
+    }else{
+        clear();
+        printf("[Erro ao salvar arquivo de frequencia]\n\n");
+    }
+}
+
+void exportFrequencias(int mes) {
+    FILE *usersFile = fopen("db/users/users.txt", "r");
+    if (!usersFile){
+        printf("[Erro ao abrir o arquivo]\n");
+        return;
+    }
+    char exportFilename[100];
+    sprintf(exportFilename, "export/frequenciainfo_%d.txt", mes);
+    FILE *exportFile = fopen(exportFilename, "w");
+    if (!exportFile) {
+        printf("[Erro ao criar o arquivo]\n");
+        fclose(usersFile);
+        return;
+    }
+    char line[300];
+    char *meses[] = {"Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+    fprintf(exportFile, "================ Relatorio de Frequencias ================\n");
+    while (fgets(line, sizeof(line), usersFile)) {
+        char uniqueID[51], fullName[101], restOfLine[150];
+        sscanf(line, "%[^|]|%[^|]|%[^\n]", uniqueID, fullName, restOfLine);
+        char freqFilename[100];
+        sprintf(freqFilename, "db/frequencia_residentes/frequencia_%d_%s.txt", mes, uniqueID);
+        FILE *freqFile = fopen(freqFilename, "r");
+        if (!freqFile){
+            continue;
+        }
+        fprintf(exportFile, "\nMes: %s\nResidente: %s\nID: %s\n", meses[mes-1], fullName, uniqueID);
+        fprintf(exportFile, "---------------------------------------------------------\n");
+
+        while (fgets(line, sizeof(line), freqFile)){
+            char residenteID[50], data[11], hora_inicio[6], hora_fim[6];
+            sscanf(line, "%[^,],%[^,],%[^,],%[^\n]", residenteID, data, hora_inicio, hora_fim);
+
+            fprintf(exportFile, "%s\n\tChegada: %s\n\tSaida: %s\n", data, hora_inicio, hora_fim);
+        }
+        fprintf(exportFile, "---------------------------------------------------------\n\n");
+        fprintf(exportFile, "\n");
+        fclose(freqFile);
+    }
+    fprintf(exportFile, "==================== Fim do Relatorio ====================\n");
+    fclose(usersFile);
+    fclose(exportFile);
+    clear();
+    printf("\n[Frequencias exportadas com sucesso]\n\n");
+}
+
 // AMBIENTE DE APRENDIZAGEM //
 
 //ambiente//
+
 bool saveAmbiente(AmbienteAprendizagem* ambiente) {
     char filename[100] = "db/ambientes/ambientes.txt";
     FILE* fp =fopen(filename, "a");
@@ -86,7 +154,7 @@ void saveAtividadeForAmbiente(char* ambienteID, AtividadeNode* atividades) {
     }
     fclose(file);
     clear();
-    printf("[Ambiente salvo com sucesso]\n\n");
+    printf("[Atividade salva com sucesso]\n\n");
 }
 bool exportAmbienteInfo(char* uniqueID) {
     char exportFilename[100];
@@ -134,6 +202,85 @@ bool exportAmbienteInfo(char* uniqueID) {
     fclose(atividadesFile);
     return true;
 }
+
+void copyAtividadesToCalendario(char* ambienteUniqueID, char* residenteUniqueID) {
+    char origemFilename[100];
+    char destinoFilename[100];
+    FILE *origemFile, *destinoFile;
+    char ch;
+    sprintf(origemFilename, "db/ambientes/atividades_%s.txt", ambienteUniqueID);
+    sprintf(destinoFilename, "db/calendario_residentes/calendario_%s.txt", residenteUniqueID);
+    remove(destinoFilename);
+    origemFile = fopen(origemFilename, "r");
+    if (origemFile==NULL){
+        printf("[Nao foi possivel abrir o arquivo de origem %s]\n", origemFilename);
+        return;
+    }
+    destinoFile = fopen(destinoFilename, "w");
+    if(destinoFile==NULL) {
+        fclose(origemFile);
+        printf("[Nao foi possivel abrir o arquivo de destino %s]\n", destinoFilename);
+        return;
+    }
+    while ((ch = fgetc(origemFile)) != EOF) {
+        fputc(ch, destinoFile);
+    }
+    fclose(origemFile);
+    fclose(destinoFile);
+    printf("[Ambiente de aprendizagem selecionado com sucesso]\n\n");
+}
+
+AtividadeNode* getCalendario(const char* residenteID){
+    char filename[256];
+    snprintf(filename, sizeof(filename), "db/calendario_residentes/calendario_%s.txt", residenteID);
+    FILE* file = fopen(filename, "r");
+    if (!file){
+        printf("[Erro ao abrir o arquivo]\n");
+        return NULL;
+    }
+    AtividadeNode* head =NULL;
+    AtividadeNode* tail =NULL;
+    char line[256];
+    while (fgets(line, sizeof(line), file)){
+        line[strcspn(line, "\n")] = 0;
+        if(strlen(line)==0) {
+            continue;
+        }
+        char nome[101];
+        char descricao[1001];
+        int diaDaSemana;
+        int horaDeInicio, minDeInicio;
+        int horaDeTermino, minDeTermino;
+        sscanf(line, "Nome: %[^\n]", nome);
+        fgets(line, sizeof(line), file);
+        sscanf(line, "Descricao: %[^\n]", descricao);
+        fgets(line, sizeof(line), file);
+        sscanf(line, "Dia da semana: %d", &diaDaSemana);
+        fgets(line, sizeof(line), file);
+        sscanf(line, "Hora de inicio: %d:%d", &horaDeInicio, &minDeInicio);
+        fgets(line, sizeof(line), file);
+        sscanf(line, "Hora de termino: %d:%d", &horaDeTermino, &minDeTermino);
+        AtividadeNode* newNode = (AtividadeNode*)malloc(sizeof(AtividadeNode));
+        strcpy(newNode->atividade.name, nome);
+        strcpy(newNode->atividade.description, descricao);
+        newNode->atividade.weekday = diaDaSemana;
+        newNode->atividade.start_time.tm_hour = horaDeInicio;
+        newNode->atividade.start_time.tm_min = minDeInicio;
+        newNode->atividade.end_time.tm_hour = horaDeTermino;
+        newNode->atividade.end_time.tm_min = minDeTermino;
+        newNode->next = NULL;
+        if (!head) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+    fclose(file);
+    return head;
+}
+
 
 // QUADRO DE AVISOS //
 Aviso getAvisos() {
@@ -244,6 +391,72 @@ AvaliacaoNode* loadAvaliacoesForPreceptor(char* preceptorID) {
     }
     fclose(fp);
     return head;
+}
+void exportAvaliacoes(int mes) {
+    FILE *usersFile = fopen("db/users/users.txt", "r");
+    if (!usersFile) {
+        printf("[Erro ao abrir o arquivo]\n");
+        return;
+    }
+    char exportFilename[100];
+    sprintf(exportFilename, "export/avaliacoesinfo_%d.txt", mes);
+    FILE *exportFile = fopen(exportFilename, "w");
+    if (!exportFile) {
+        printf("[Erro ao criar arquivo de exportação]\n");
+        fclose(usersFile);
+        return;
+    }
+    char line[300];
+    char *meses[] = {"Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+    struct tm *tm_info;
+    fprintf(exportFile, "================ Relatorio de Avaliacoes ================\n", meses[mes-1]);
+    while (fgets(line, sizeof(line), usersFile)) {
+        char residenteID[51], residenteName[101], restOfLine[150];
+        sscanf(line, "%[^|]|%[^|]|%[^\n]", residenteID, residenteName, restOfLine);
+        char avalFilename[100];
+        sprintf(avalFilename, "db/avaliacoes_residentes/avaliacoes_%s.txt", residenteID);
+        FILE *avalFile =fopen(avalFilename, "r");
+        if (!avalFile) {
+            continue;
+        }
+        while (fgets(line, sizeof(line), avalFile)){
+            Avaliacao avaliacao;
+            sscanf(line, "%f|%f|%f|%f|%[^|]|%[^|]|%[^|]|%ld|%d", &avaliacao.nota1, &avaliacao.nota2, &avaliacao.nota3, &avaliacao.media, avaliacao.feedback, avaliacao.preceptorID, avaliacao.residenteID, (long *)&avaliacao.timestamp, &avaliacao.avaliado);
+            tm_info = localtime(&avaliacao.timestamp);
+            if (tm_info->tm_mon + 1==mes) {
+                char preceptorName[101];
+                FILE *userFilePrecep =fopen("db/users/users.txt", "r");
+                while (fgets(line, sizeof(line), userFilePrecep)){
+                    char tmpUniqueID[51], tmpFullName[101];
+                    sscanf(line, "%[^|]|%[^|]", tmpUniqueID, tmpFullName);
+                    if (strcmp(tmpUniqueID, avaliacao.preceptorID)==0){
+                        strcpy(preceptorName, tmpFullName);
+                        break;
+                    }
+                }
+                fclose(userFilePrecep);
+                fprintf(exportFile, "\n-----------------------------\n");
+                fprintf(exportFile, "Mes                : %s\n", meses[tm_info->tm_mon]);
+                fprintf(exportFile, "Nome do Residente  : %s\n", residenteName);
+                fprintf(exportFile, "ID do Residente    : %s\n", avaliacao.residenteID);
+                fprintf(exportFile, "Nome do Preceptor  : %s\n", preceptorName);
+                fprintf(exportFile, "ID do Preceptor    : %s\n", avaliacao.preceptorID);
+                fprintf(exportFile, "\n");
+                fprintf(exportFile, "Nota 1             : %.2f\n", avaliacao.nota1);
+                fprintf(exportFile, "Nota 2             : %.2f\n", avaliacao.nota2);
+                fprintf(exportFile, "Nota 3             : %.2f\n", avaliacao.nota3);
+                fprintf(exportFile, "Media              : %.2f\n", avaliacao.media);
+                fprintf(exportFile, "\n");
+                fprintf(exportFile, "Feedback           : %s\n", avaliacao.feedback);
+                fprintf(exportFile, "-----------------------------\n");
+            }
+        }
+        fclose(avalFile);
+    }
+    fprintf(exportFile, "\n==================== Fim do Relatório ====================\n");
+    fclose(usersFile);
+    fclose(exportFile);
+    printf("\n[Avaliacoes exportadas com sucesso]\n\n");
 }
 
 // USER //

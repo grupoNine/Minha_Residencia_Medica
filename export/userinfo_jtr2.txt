@@ -1,0 +1,7 @@
+[Informacoes do usuario]
+ID Unico: jtr2
+Nome Completo: Joao Teste Residente
+Nome de Exibicao: Joao Residente
+Senha: z0Pa5
+Nivel de Acesso: 1
+Data de Criacao: 12-06-2023 19:07:56

@@ -1,5 +1,10 @@
+UNIQUE_ID: ep
+NOME: Emergencia Pediatrica
+DESCRICAO: 2 meses - No rodizio da emergencia, os residentes entrarao em escala de plantao noturno. Nao ha atividade nos dias de feriado
+PRECEPTOR_ID: dtp
+----------------
 UNIQUE_ID: e
-NOME: Emergencia
-DESCRICAO: Emergencia medica do hospital
-PRECEPTOR_ID: p1
+NOME: Enfermarias
+DESCRICAO: Os horarios de ambulatorio dos residentes tem escala propria a confirmar com os preceptores
+PRECEPTOR_ID: dtp2
 ----------------

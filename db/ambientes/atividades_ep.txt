@@ -1,0 +1,84 @@
+Nome: Atendimento na emergencia
+Descricao: Atendimento de fichas verdes, amarelas e vermelhas. Atencao para sazonalidade das infeccoes respiratorias.
+Dia da semana: 1
+Hora de inicio: 07:00
+Hora de termino: 12:00
+
+Nome: Atendimento na emergencia
+Descricao: Atendimento de fichas verdes, amarelas e vermelhas. Atencao para sazonalidade das infeccoes respiratorias.
+Dia da semana: 2
+Hora de inicio: 07:00
+Hora de termino: 12:00
+
+Nome: Atendimento na emergencia
+Descricao: Atendimento de fichas verdes, amarelas e vermelhas. Atencao para sazonalidade das infeccoes respiratorias.
+Dia da semana: 3
+Hora de inicio: 07:00
+Hora de termino: 12:00
+
+Nome: Atendimento na emergencia
+Descricao: Atendimento de fichas verdes, amarelas e vermelhas. Atencao para sazonalidade das infeccoes respiratorias.
+Dia da semana: 4
+Hora de inicio: 07:00
+Hora de termino: 12:00
+
+Nome: Atendimento na emergencia
+Descricao: Atendimento de fichas verdes, amarelas e vermelhas. Atencao para sazonalidade das infeccoes respiratorias.
+Dia da semana: 5
+Hora de inicio: 07:00
+Hora de termino: 12:00
+
+Nome: Reuniao Clinica
+Descricao: Discussao de casos e atividades teoricas
+Dia da semana: 6
+Hora de inicio: 14:00
+Hora de termino: 17:00
+
+Nome: Reuniao Clinica
+Descricao: Discussao de casos e atividades teoricas
+Dia da semana: 7
+Hora de inicio: 14:00
+Hora de termino: 17:00
+
+Nome: Evolucao no EP
+Descricao: Fazer escala no setor com orientacao dos preceptores
+Dia da semana: 1
+Hora de inicio: 14:00
+Hora de termino: 17:00
+
+Nome: Evolucao no EP
+Descricao: Fazer escala no setor com orientacao dos preceptores
+Dia da semana: 2
+Hora de inicio: 14:00
+Hora de termino: 17:00
+
+Nome: Evolucao no EP
+Descricao: Fazer escala no setor com orientacao dos preceptores
+Dia da semana: 3
+Hora de inicio: 14:00
+Hora de termino: 17:00
+
+Nome: Evolucao no EP
+Descricao: Fazer escala no setor com orientacao dos preceptores
+Dia da semana: 4
+Hora de inicio: 14:00
+Hora de termino: 17:00
+
+Nome: Evolucao no EP
+Descricao: Fazer escala no setor com orientacao dos preceptores
+Dia da semana: 5
+Hora de inicio: 14:00
+Hora de termino: 17:00
+
+Nome: Evolucao no EP
+Descricao: Fazer escala no setor com orientacao dos preceptores
+Dia da semana: 6
+Hora de inicio: 08:00
+Hora de termino: 11:00
+
+Nome: Evolucao no EP
+Descricao: Fazer escala no setor com orientacao dos preceptores
+Dia da semana: 7
+Hora de inicio: 08:00
+Hora de termino: 11:00
+

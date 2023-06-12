@@ -47,10 +47,13 @@ void residenteMenu() {
         printf("%s\n", aviso.mensagem);
         printf("    Ass.: %s\n\n", aviso.username);
         printf("----------------------------------\n\n");
-        
+        printCalendario(current.user->uniqueID);      
         printf("MENU\n");
         int choice;
-        printf("[1] Solicitar avaliacao\n[0] Sair\n\n>>> ");
+        printf("[1] Marcar presenca\n");
+        printf("[2] Solicitar avaliacao\n");
+        printf("[3] Selecionar ambiente de aprendizagem\n");
+        printf("[0] Sair\n\n>>> ");
         scanf("%d", &choice);
         getchar();
         printf("\n");
@@ -61,7 +64,13 @@ void residenteMenu() {
             break;
         } else if(choice == 1){
             clear();
+            marcarFrequencia(current.user->uniqueID);
+        } else if(choice == 2) {
+            clear();
             solicitarAvaliacaoMenu();
+        } else if(choice == 3) {
+            clear();
+            selecionarAmbienteAprendizagemMenu();
         } else {
             clear();
             printf("[Opcao invalida]\n\n");
@@ -126,6 +135,48 @@ void solicitarAvaliacaoMenu() {
         free(node);
         node = nextNode;
     }
+}
+
+// ambientes de aprendizagem //
+
+void printCalendario(const char* residenteID) {
+    AtividadeNode* atividades = getCalendario(residenteID);
+    sortCalendario(&atividades);
+    if (atividades==NULL){
+        printf("[Nenhuma atividade]\n");
+        return;
+    }
+    const char* diasDaSemana[]={"Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"};
+    time_t t;
+    struct tm *timeinfo;
+    time(&t);
+    timeinfo = localtime(&t);
+    int currentDiaDaSemana = timeinfo->tm_wday;
+    currentDiaDaSemana = (currentDiaDaSemana + 6) % 7;
+    printf("------------ATIVIDADES------------\n");
+    printf("%s, ", diasDaSemana[currentDiaDaSemana]);
+    printf("%02d/%02d/%04d\n", timeinfo->tm_mday, timeinfo->tm_mon + 1, timeinfo->tm_year + 1900);
+    printf("----------------------------------\n");
+    int atividadeEncontrada=0;
+    printf("--------------\n");
+    AtividadeNode* currentNode = atividades;
+    while(currentNode!=NULL) {
+        if (currentNode->atividade.weekday==currentDiaDaSemana+1){
+            atividadeEncontrada=1;
+            printf("%s\n", currentNode->atividade.name);
+            printf("Inicio: %02d:%02d\n", currentNode->atividade.start_time.tm_hour, currentNode->atividade.start_time.tm_min);
+            printf("Termino: %02d:%02d\n", currentNode->atividade.end_time.tm_hour, currentNode->atividade.end_time.tm_min);
+            printf("--------------\n");
+        }
+        AtividadeNode* temp =currentNode;
+        currentNode = currentNode->next;
+        free(temp);
+    }
+    if(!atividadeEncontrada){
+    printf("[Nenhuma atividade]\n");
+    printf("--------------\n");
+    }
+    printf("----------------------------------\n\n");
 }
 
 // PRECEPTOR MENU //
@@ -314,7 +365,7 @@ void editarAmbienteMenu(AmbienteAprendizagem* ambiente) {
     int choice;
     do {
         printf("EDITAR AMBIENTE DE APRENDIZAGEM\n\n");
-        printf("Ambiente: %s\n", ambiente->name);
+        printf("Ambiente: %s\n\n", ambiente->name);
         printf("MENU\n");
         printf("[1] Criar atividade para o ambiente\n");
         printf("[2] Exportar ambiente\n");
@@ -349,9 +400,11 @@ void gestorMenu() {
         printf("----------------------------------\n\n");
         printf("MENU\n");
         int choice;
-        printf("[1] Cadastrar novo usuario\n");
-        printf("[2] Quadro de avisos\n");
-        printf("[0] Sair\n\n>>> ");
+        printf("[1] Exportar frequencias\n");
+        printf("[2] Exportar avaliacoes\n");
+        printf("[3] Quadro de avisos\n");
+        printf("[4] Cadastrar novo usuario\n");
+        printf("[0] Voltar\n\n>>> ");
         scanf("%d", &choice);
         getchar();
         if (choice == 0) {
@@ -360,6 +413,12 @@ void gestorMenu() {
             clear();
             break;
         } else if (choice == 1) {
+            exportFrequenciasMenu();
+        } else if (choice == 2) {
+            exportAvaliacoesMenu();
+        } else if (choice == 3) {
+            quadroDeAvisosMenu();
+        } else if (choice == 4) {
             bool signupResult = signupInterface();
             if (signupResult) {
                 printf("[Cadastro realizado com sucesso]\n\n");
@@ -367,8 +426,6 @@ void gestorMenu() {
                 clear();
                 printf("[Cadastro falhou, tente novamente]\n\n");
             }
-        } else if(choice == 2){
-            quadroDeAvisosMenu();
         } else {
             clear();
             printf("[Opção invalida]\n\n");
