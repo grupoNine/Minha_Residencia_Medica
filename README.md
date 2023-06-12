@@ -94,7 +94,12 @@ Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.
   <img width="2905" alt="preceptor" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/4543de81-70f9-4918-8ab9-063127fcd31d">
 
   <img width="2885" alt="gestor" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/6494de31-faa0-4a5c-b18a-4b77f31b84f3">
+  
+  <img width="307" alt="2" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/f85fb332-41a3-4a87-a62e-1ed50e64a725">
 
+  <img width="293" alt="5" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/065823f7-e57e-4754-abc3-4a788467ff1a">
+
+  <img width="299" alt="8" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/aefdd771-5c7f-4b22-8975-49bf2e76ea01">
 
 ---
 
@@ -107,7 +112,8 @@ Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.
 
   <img width="1464" alt="datalayer" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/a7a500df-0745-4053-b4d1-61417cf05c97">
 
-  <img width="346" alt="folder" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/71b6d5ed-bbd0-4730-8860-04839d488d60">
+  <img width="186" alt="Screenshot 2023-06-12 201516" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/0d26102f-1ff3-4314-b805-6d8eb6af4b9a">
+
 
 ---
 
@@ -118,8 +124,9 @@ Nosso maior aliado nos testes foi o debugger GNU gdb: o comando do makefile `mak
 
 Foram recorrentes falhas de 'segfault' por conta gestão da alocação de memória típica de C, o comando do gdb `backtrace` foi útil em apontar essa e outras falhas.
 
-O início do desenvolvimento, na construção dos menus, login e signup utilizamos testes enquanto produziamos o código e setup inicial.
+O início do desenvolvimento, na construção dos menus, login e signup realizamos testes enquanto produziamos código e o setup inicial.
 Como esses códigos iniciais funcionaram como protótipos para o restante do código, o número de bugs e falhas mais imediatas se reduziram, e passamos a testar mais isoladamente e utilizar mais o gdb.
+A criação de prints de verificação ao longo do código também foi uma prática que permitiu rastrear mais rápidos os problemas.
 
 Para isso, além de constantes testes exploratórios, automatizamos no makefile a execução do arquivo tests.c com funções para testes unitários e de integração, que geram um arquivo tests.txt como relatório.
 
