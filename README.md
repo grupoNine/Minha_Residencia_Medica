@@ -66,6 +66,15 @@ Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.
 
   -> Limpa os arquivos temporários e o executável
    `make clean` 
+   
+  -> Foram criados usuários padrões para fim de testes, são:
+  
+  Residente -> usuário: `jtr` senha: `1234`
+  
+  Preceptora -> usuário: `dtp` senha: `1234`
+  
+  Gestora -> usuário: `rtg` senha:`1234`
+  
 
 ---
 
@@ -92,6 +101,8 @@ Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.
 📐 
 ### Arquitetura
 
+  [FIGMA](https://www.figma.com/file/N0Fp63qzlDYMZJPfZjzGFT/Arquitetura?type=whiteboard&node-id=0%3A1&t=NLGScytnXbGCC0zG-1)
+
   <img width="5176" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/8cdf600f-dfbc-4145-abdc-d7eb4bafe4eb">
 
   <img width="1464" alt="datalayer" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/a7a500df-0745-4053-b4d1-61417cf05c97">
@@ -103,14 +114,14 @@ Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.
 🔎
 ### Testes
 
-Nosso maior aliado nos testes foi o debugger GNU gdb, por meio do makefile podemos utilizar o comando `make test` nos permitiu observar o comportamento do programa e facilitou a busca mais precisão por bugs no código.
+Nosso maior aliado nos testes foi o debugger GNU gdb: o comando do makefile `make test` nos permitiu observar o comportamento do programa e encontrar de forma precisa por bugs no código.
 
-Foram recorrentes falhas de 'segfault' pela dificuldade de gestão da alocação de memória típica de C, o comando do gdb `backtrace` nos ajudou bastante apontando as falhas.
+Foram recorrentes falhas de 'segfault' por conta gestão da alocação de memória típica de C, o comando do gdb `backtrace` foi útil em apontar essa e outras falhas.
 
-O início do desenvolvimento, na construção dos menus, login, signup e avaliação utilizamos testes enquanto produziamos o código, próximo a uma metodologia test-driven.
-Como esses códigos iniciais funcionaram como protótipos para o restante do código, o número de bugs e falhas mais imediatas se reduziram, e passamos a testar apenas ao fim.
+O início do desenvolvimento, na construção dos menus, login e signup utilizamos testes enquanto produziamos o código e setup inicial.
+Como esses códigos iniciais funcionaram como protótipos para o restante do código, o número de bugs e falhas mais imediatas se reduziram, e passamos a testar mais isoladamente e utilizar mais o gdb.
 
-Para isso além de constantes testes exploratórios, fizemos um arquivo tests.c com funções para testes unitários e de integração, que geram um arquivo tests.txt como relatório.
+Para isso, além de constantes testes exploratórios, automatizamos no makefile a execução do arquivo tests.c com funções para testes unitários e de integração, que geram um arquivo tests.txt como relatório.
 
 ---
 
@@ -139,16 +150,5 @@ Para isso além de constantes testes exploratórios, fizemos um arquivo tests.c 
 👨‍💻
 ### Team
 
-<table>
-  <tr>
-    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/116602650?v=4" width="100px;" alt=""/><br /><sub><b>Gislaine Reis</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/116669790?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Cortez</b></sub></a><br /></a></td>
-    <td align="center"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/111138996?v=4" width="100px;" alt=""/><br /><sub><b>Pedro Coelho</b></sub></a><br /></a></td>
-   <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D03AQEWkpGgAcLo1g/profile-displayphoto-shrink_800_800/0/1681732287722?e=1689811200&v=beta&t=vVd3v_YpV9SKdRb5PsvHOVR-iCTeRcIttLRth9ARC-Q" width="100px;" alt=""/><br /><sub><b>Letícia Pinheiro</b></sub></a><br /></a></td>   
-    <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D03AQGwFWKSKKaDUA/profile-displayphoto-shrink_800_800/0/1679698808237?e=1689811200&v=beta&t=0x_3B1zlS50soHbgrMand6jJHPZQZy49NfavBw95Fxc" width="100px;" alt=""/><br /><sub><b>Bruna Carvalho</b></sub></a><br /></a></td>
-     <td align="center"><img style="border-radius: 50%;" src="https://media.licdn.com/dms/image/D4D35AQEbX5ogC2YVRg/profile-framedphoto-shrink_800_800/0/1642452377945?e=1685106000&v=beta&t=4dC0vixL13cvxCBPV3TXB-GEYBrB3m7R6Aa3AohXQco" width="100px;" alt=""/><br /><sub><b>Guilherme Lopes</b></sub></a><br /></a></td>   
-   
-   
+<img width="602" alt="image" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/bc4b7da8-0977-4505-ad36-0f25971cd3c8">
 
-    
-  </tr>
