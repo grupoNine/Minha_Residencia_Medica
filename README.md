@@ -110,7 +110,7 @@ Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.
 
   <img width="5176" alt="Arquitetura" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/8cdf600f-dfbc-4145-abdc-d7eb4bafe4eb">
 
-  <img width="1464" alt="datalayer" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/a7a500df-0745-4053-b4d1-61417cf05c97">
+  ![datalayer](https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/4c74e281-51aa-4399-bdcc-ee94910afd4f)
 
   <img width="186" alt="Screenshot 2023-06-12 201516" src="https://github.com/grupoNine/Minha_Residencia_Medica/assets/111138996/0d26102f-1ff3-4314-b805-6d8eb6af4b9a">
 
