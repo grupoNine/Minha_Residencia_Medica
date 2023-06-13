@@ -120,15 +120,15 @@ Para mais informações sobre o projeto, acesse: https://sites.google.com/cesar.
 🔎
 ### Testes
 
-Nosso maior aliado nos testes foi o debugger GNU gdb: o comando do makefile `make test` nos permitiu observar o comportamento do programa e encontrar de forma precisa por bugs no código.
+Nosso maior aliado nos testes foi o debugger GNU gdb: o comando do makefile `make run-debug` nos permitiu observar o comportamento do programa e encontrar de forma precisa por bugs no código.
 
-Foram recorrentes falhas de 'segfault' por conta gestão da alocação de memória típica de C, o comando do gdb `backtrace` foi útil em apontar essa e outras falhas.
+Foram recorrentes falhas de 'segfault' por conta gestão da alocação de memória típica de C, o comando do gdb `backtrace` foi útil em apontar essas e outras falhas.
 
 O início do desenvolvimento, na construção dos menus, login e signup realizamos testes enquanto produziamos código e o setup inicial.
 Como esses códigos iniciais funcionaram como protótipos para o restante do código, o número de bugs e falhas mais imediatas se reduziram, e passamos a testar mais isoladamente e utilizar mais o gdb.
-A criação de prints de verificação ao longo do código também foi uma prática que permitiu rastrear mais rápidos os problemas.
+A criação de prints de verificação ao longo do código também foi uma prática que permitiu rastrear mais rápido os problemas.
 
-Para isso, além de constantes testes exploratórios, automatizamos no makefile a execução do arquivo tests.c com funções para testes unitários e de integração, que geram um arquivo tests.txt como relatório.
+Para isso, além de constantes testes exploratórios, automatizamos no makefile `make test` a execução do arquivo tests.c com funções para testes unitários e de integração, que geram um arquivo tests.txt como relatório.
 
 ---
 
